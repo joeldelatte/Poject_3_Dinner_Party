@@ -1,0 +1,2 @@
+is this something like the pages folder for wrapper components like in the examples we're referrencing? 
+I had some errors and changed the file structure to have app.js in the src directory. Don't know if this fixed it or is something else I did fixed it.
