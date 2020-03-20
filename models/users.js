@@ -16,7 +16,15 @@ module.exports = function (sequelize, DataTypes) {
 
     Users.associate = function (models) {
         Users.hasMany(models.Events, {
-            onDelete: "cascade"
+            foreignKey: {
+                allowNull: false
+            }
+        });
+
+        Users.hasMany(models.Rsvps, {
+            foreignKey: {
+                allowNull: false
+            }
         });
     };
 
