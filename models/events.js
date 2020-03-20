@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         app_description: {
             type: DataTypes.STRING,
-            allowNull: tue,
+            allowNull: true,
         },
         entree: {
             type: DataTypes.STRING,
