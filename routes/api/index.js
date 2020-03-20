@@ -1,8 +1,9 @@
 const router = require("express").Router();
-const invitationRoutes = require("./invitation");
+const eventsRoutes = require("./events-api-routes");
+const userRoutes = require("./user-api-routes")
 // this is copied from 21.5 may need adjustments
-router.use("/invitation", invitationRoutes);
+router.use("/events", eventsRoutes);
 // how do I add a other routes? possible for Users?
-router.use("")
+router.use("/user", userRoutes);
 
 module.exports = router;
