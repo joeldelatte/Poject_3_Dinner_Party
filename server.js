@@ -14,7 +14,11 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
 
-app.use(routes);
+// app.use(routes);
+
+require("./routes/api/events-api-routes");
+require("./routes/api/user-api-routes");
+require("./routes/api/rsvp-api-routes");
 
 db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
