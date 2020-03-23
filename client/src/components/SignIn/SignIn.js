@@ -15,7 +15,7 @@ export default function SignIn() {
       event.preventDefault();
     }
 
-    function logIn() {
+    function loadUser() {
       API.getUser()
       .then(res => {
         console.log(res.data);
@@ -30,14 +30,14 @@ export default function SignIn() {
             <form className="card-body text-dark" >
               <div className="form-group">
                 <label htmlFor="username" className="form-row">Username:</label>
-                <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassword(e.target.value)}/>
+                <input type="text" className="form-control form-row" placeholder="" onChange={e => setUserName(e.target.value)}/>
               </div>
               <div className="form-group">
                 <label htmlFor="password" className="form-row">Password:</label>
-                <input type="text" className="form-control form-row" placeholder="" onChange={e => setUserName(e.target.value)}/>
+                <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassword(e.target.value)}/>
               </div>
               <div className="form-row justify-content-center" >
-                <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ logIn() } onSubmit={ handleSubmit }>Login</button>
+                <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ loadUser() } onSubmit={ handleSubmit }>Login</button>
               </div>
             </form>
           </div>
