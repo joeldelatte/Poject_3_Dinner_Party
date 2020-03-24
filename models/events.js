@@ -16,6 +16,22 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        event_address: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        event_city: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        event_state: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        event_zip: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         app: {
             type: DataTypes.STRING,
             allowNull: true,
