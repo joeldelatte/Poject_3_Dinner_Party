@@ -1,13 +1,17 @@
 import React from "react";
 
+const styles = {
+  spaceItOut: {
+    marginTop: 75
+  }
+}
+
 export default function Footer() {
     return (
         <>
-          <footer className="footer">
-              <div className="container">
-                <span class="text-muted">Place sticky footer content here.</span>
-              </div>
-          </footer>
+          <div className="navbar bg-light row justify-content-center" style={styles.spaceItOut}>
+                <span className="text-muted">Place sticky footer content here.</span>
+          </div>
         </>
     )
 }
