@@ -1,20 +1,20 @@
-// import React from 'react';
-// import Feed from './Feed/Feed';
+import React from 'react';
+import Feed from './Feed/Feed';
 
-// const feeds = () => {
-//     return props.events.map((feed, index) => {
-//         return <Feed
-//             click={() => props.clicked(index)}
-//             name={feed.event_name}
-//             app={feed.app}
-//             appdes={feed.app_description}
-//             entree={feed.entree}
-//             entreedes={feed.entree_description}
-//             dessert={feed.dessert}
-//             dessertdes={feed.dessert_description}
-//             key={feed.id}
-//         />
-//     });
-// };
+const feeds = (props) => {
+    return props.events.map((event, index) => {
+        return <Feed
+            click={() => props.clicked(index)}
+            name={event.event_name}
+            app={event.app}
+            appdes={event.app_description}
+            entree={event.entree}
+            entreedes={event.entree_description}
+            dessert={event.dessert}
+            dessertdes={event.dessert_description}
+            key={event.id}
+        />
+    });
+};
 
-// export default feeds;
+export default feeds;
