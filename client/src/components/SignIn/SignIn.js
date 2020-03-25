@@ -28,7 +28,7 @@ export default function SignIn() {
           <div className="col-md-4"></div>
           <div className="col-md-4">
             <div className="card border-dark">
-              <div className="card-header">Sign In</div>
+              <div className="card-header text-center">Sign In</div>
               <form className="card-body text-dark" >
                 <div className="form-group">
                   <label htmlFor="username" className="form-row">Username:</label>
