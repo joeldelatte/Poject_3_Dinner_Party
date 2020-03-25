@@ -13,14 +13,22 @@ export default function SignUp() {
 
     function handleSubmit(event) {
       event.preventDefault();
-    }
+      if (validateForm()) {
+        API.postUser({
+          username: userName,
+          password: password
+        })
+        .then(res => console.log(res))
+      }
+      
+    };
 
-    function createUser() {
-      API.postUser()
-      .then(res => {
-        console.log(res.data);
-      });
-    }
+    // function createUser() {
+    //   API.postUser()
+    //   .then(res => {
+    //     console.log(res.data);
+    //   });
+    // }
 
     return (
       <>
@@ -28,7 +36,7 @@ export default function SignUp() {
           <div className="col-md-4"></div>
           <div className="col-md-4">
             <div className="card border-dark">
-              <div className="card-header">Create Account</div>
+              <div className="card-header text-center">Create Account</div>
               <form className="card-body text-dark" >
                 <div className="form-group">
                   <label htmlFor="username" className="form-row">Username:</label>
@@ -38,8 +46,12 @@ export default function SignUp() {
                   <label htmlFor="password" className="form-row">Password:</label>
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassword(e.target.value)}/>
                 </div>
+                <div className="form-group">
+                  <label htmlFor="password" className="form-row">Confirm Password:</label>
+                  <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassword(e.target.value)}/>
+                </div>
                 <div className="form-row justify-content-center" >
-                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ createUser() } onSubmit={ handleSubmit }>Sign Up</button>                   
+                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ handleSubmit } onSubmit={ handleSubmit }>Sign Up</button>                   
                 </div>
               </form>
             </div>

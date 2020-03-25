@@ -19,9 +19,7 @@ const styles = {
 export default function Landing() {
 
   const [signIn, setSignIn] = useState(false);
-  console.log(signIn)
-
-
+  
     return (
         <div className="container" style={styles.keepIt}>
           <Jumbotron />
