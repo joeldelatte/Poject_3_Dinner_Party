@@ -1,0 +1,41 @@
+.map {
+    width: 310px;
+    height: 200px;
+}
+
+.feed-container {
+    margin: 16px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+}
+
+.event-title {
+    font-size: 20px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+td {
+    padding-right: 20px;
+}
+
+.menu-table {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.button-row {
+    margin-top: 10px;
+}
+
+.people {
+    margin-left: 5px;
+}
+
+.rsvp-button {
+    box-shadow: 0 1px 2px rgb(10, 161, 73);
+    color: rgb(10, 161, 73);
+}
