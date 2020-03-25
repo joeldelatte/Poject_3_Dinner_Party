@@ -6,11 +6,6 @@ import './App.css';
 
 function App() {
   return (
-<<<<<<< HEAD
-    <div className="container">
-      <SignIn />
-    </div>
-=======
     <Router>
       <div>
         <Switch>
@@ -25,7 +20,6 @@ function App() {
         </Switch>
       </div>
     </Router>
->>>>>>> c70c28567e7affe3040d16bd4c2af92e4b3dbb28
   );
 }
 
