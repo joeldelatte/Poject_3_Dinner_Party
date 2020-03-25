@@ -102,7 +102,7 @@ const feed = (props) => {
                 <div className='col-4'>
                     <div className='row'>
                         <div className='col'>
-                            <img className='map' src={map} />
+                            <img className='map' src={map} alt='thumbnail of event location' />
                         </div>
                     </div>
                     <div className='row button-row'>

@@ -17,7 +17,8 @@ class FeedPage extends Component {
         return (
             <div className='FeedPage'>
                 <Navbar />
-                <Feeds
+                <Feeds 
+                className='feeds'
                 events={this.state.events} />
                 {/* clicked={} /> */}
                 <Footer />

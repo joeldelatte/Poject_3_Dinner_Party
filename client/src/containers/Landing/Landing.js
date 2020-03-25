@@ -8,7 +8,7 @@ const styles = {
   keepIt: {
     maxWidth: '100%',
     paddingLeft: 0,
-    paddingRight: 0
+    paddingRight: 0,
   },
   buttonSpacer: {
     marginTop: 20,
