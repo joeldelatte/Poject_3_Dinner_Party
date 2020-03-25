@@ -1,6 +1,6 @@
 import React, {useState}from "react";
-import Jumbotron from "../../components/Jumbotron";
-import Footer from "../../components/Footer"
+import Jumbotron from "../../components/Jumbotron/Jumbotron";
+import Footer from "../../components/Footer/Footer"
 import SignIn from "../../components/SignIn/SignIn";
 import SignUp from "../../components/SignUp/SignUp";
 
