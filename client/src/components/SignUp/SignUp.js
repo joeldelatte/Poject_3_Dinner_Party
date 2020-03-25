@@ -39,7 +39,7 @@ export default function SignUp() {
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassword(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ loadUser() } onSubmit={ handleSubmit }>Sign Up</button>                   
+                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ createUser() } onSubmit={ handleSubmit }>Sign Up</button>                   
                 </div>
               </form>
             </div>
