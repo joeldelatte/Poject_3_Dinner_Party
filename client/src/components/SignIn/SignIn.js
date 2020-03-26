@@ -5,10 +5,10 @@ import API from "../../utils/API";
 export default function SignIn() {
 // functionality here
     const [userName, setUserName] = useState("");
-    const [password, setPassword] = useState("");
+    const [passWord, setPassWord] = useState("");
 
     function validateForm() {
-      return userName.length > 0 && password.length > 0;
+      return userName.length > 0 && passWord.length > 0;
     }
 
     function handleSubmit(event) {
@@ -19,6 +19,7 @@ export default function SignIn() {
       API.getUser()
       .then(res => {
         console.log(res.data);
+        console.log(userName, passWord)
       });
     }
 
@@ -36,10 +37,10 @@ export default function SignIn() {
                 </div>
                 <div className="form-group">
                   <label htmlFor="password" className="form-row">Password:</label>
-                  <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassword(e.target.value)}/>
+                  <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ loadUser() } onSubmit={ handleSubmit }>Login</button>                   
+                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ loadUser } onSubmit={ handleSubmit }>Login</button>                   
                 </div>
               </form>
             </div>

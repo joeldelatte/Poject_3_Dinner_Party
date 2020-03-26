@@ -9,10 +9,10 @@ module.exports = function(app) {
         });
     });
 
-    app.get("/api/users/:id", function(req, res) {
+    app.get("/api/users/:password", function(req, res) {
         db.Users.findOne({
             where: {
-                id: req.params.id
+                password: req.params.password
             }
         }).then(function(dbUsers) {
             res.json(dbUsers);
