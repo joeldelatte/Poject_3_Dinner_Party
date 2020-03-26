@@ -1,5 +1,12 @@
 import axios from "axios";
 
+axios.create({
+    baseURL: "http://localhost:3001/api",
+    headers: {
+      "Content-type": "application/json"
+    }
+  });
+
 export default {
     getUser: function(password) {
         return axios.get("/api/users/" + password);

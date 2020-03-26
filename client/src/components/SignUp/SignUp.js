@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import API from "../../utils/API";
+import axios from "axios";
 
 export default function SignUp() {
 // functionality here
