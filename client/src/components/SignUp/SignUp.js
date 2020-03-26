@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
 import API from "../../utils/API";
-import axios from "axios";
 
 export default function SignUp() {
 // functionality here
@@ -14,21 +13,11 @@ export default function SignUp() {
 
     function handleSubmit(event) {
       event.preventDefault();
-      if (validateForm()) {
-        API.postUser({
-          username: userName,
-          password: passWord
-        })
-        .then(res => console.log(res))
-      }
-      
     };
 
-    // function createUser() {
-    //   API.postUser()
-    //   .then(res => {
-    //     console.log(res.data);
-    //   });
+    // function handleSubmit(event) {
+    //   event.preventDefault();
+    //   if (validateForm()) {console.log("hi")}
     // }
 
     return (
@@ -38,7 +27,7 @@ export default function SignUp() {
           <div className="col-md-4">
             <div className="card border-dark">
               <div className="card-header text-center">Create Account</div>
-              <form className="card-body text-dark" >
+              <form className="card-body text-dark" onSubmit={ handleSubmit } >
                 <div className="form-group">
                   <label htmlFor="username" className="form-row">Username:</label>
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setUserName(e.target.value)}/>
@@ -52,7 +41,7 @@ export default function SignUp() {
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ handleSubmit } onSubmit={ handleSubmit }>Sign Up</button>                   
+                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ () => console.log("hi") } >Sign Up</button>                   
                 </div>
               </form>
             </div>
