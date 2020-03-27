@@ -2,3 +2,8 @@
     padding-right: 100px;
     font-weight: bold;
 }
+
+.navbar {
+    margin-bottom: 60px;
+    background-color: rgb(231, 234, 240);
+}

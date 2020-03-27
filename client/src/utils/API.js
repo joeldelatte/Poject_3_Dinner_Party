@@ -13,10 +13,10 @@ export default {
     getEvents: function () {
         return http.get("/api/events");
     },
-    saveEvent: function(eventData) {
-        return http.post("/api/events", eventData);
-    },
     deleteEvent: function(id) {
         return http.delete("/api/events/" + id);
+    },
+    createEvent: function(eventData) {
+        return http.post("/api/create", eventData);
     }
 };

@@ -4,9 +4,9 @@ import './Footer.css';
 export default function footer() {
     return (
         <div>
-            <footer className="footer">
+            <div className="footer">
                 <p>Dinner Party</p>
-            </footer>
+            </div>
         </div>
     )
 }
