@@ -13,13 +13,13 @@ export default function SignIn() {
 
     function handleSubmit(event) {
       event.preventDefault();
+      console.log(userName, passWord)
     }
 
-    function loadUser() {
-      API.getUser()
+    function loadUser(passWord) {
+      API.getUser(passWord)
       .then(res => {
-        console.log(res.data);
-        console.log(userName, passWord)
+        console.log(res);
       });
     }
 
@@ -30,7 +30,7 @@ export default function SignIn() {
           <div className="col-md-4">
             <div className="card border-dark">
               <div className="card-header text-center">Sign In</div>
-              <form className="card-body text-dark" >
+              <form className="card-body text-dark" onSubmit={ handleSubmit } >
                 <div className="form-group">
                   <label htmlFor="username" className="form-row">Username:</label>
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setUserName(e.target.value)}/>
@@ -40,7 +40,7 @@ export default function SignIn() {
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ loadUser } onSubmit={ handleSubmit }>Login</button>                   
+                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ () =>loadUser(passWord) } >Login</button>                   
                 </div>
               </form>
             </div>

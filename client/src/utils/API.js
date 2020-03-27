@@ -1,22 +1,22 @@
-import axios from "axios";
+import http from "./http-common";
 
 export default {
     getUser: function(password) {
-        return axios.get("/api/users/" + password);
+        return http.get("/api/users/" + password);
     },
     postUser: function(userData) {
-        return axios.post("api/users", userData);
+        return http.post("api/users", userData);
     },
     getEvent: function (id) {
-        return axios.get("/api/events/" + id);
+        return http.get("/api/events/" + id);
     },
     getEvents: function () {
-        return axios.get("/api/events");
+        return http.get("/api/events");
     },
     saveEvent: function(eventData) {
-        return axios.post("/api/events", eventData);
+        return http.post("/api/events", eventData);
     },
     deleteEvent: function(id) {
-        return axios.delete("/api/events/" + id);
+        return http.delete("/api/events/" + id);
     }
 };
