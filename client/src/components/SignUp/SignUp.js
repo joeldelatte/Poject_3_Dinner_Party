@@ -15,10 +15,14 @@ export default function SignUp() {
       event.preventDefault();
     };
 
-    // function handleSubmit(event) {
-    //   event.preventDefault();
-    //   if (validateForm()) {console.log("hi")}
-    // }
+    function createUser() {
+
+      API.postUser({
+        username: userName,
+        password: passWord
+      })
+      .then(res => console.log(res));
+    };
 
     return (
       <>
@@ -41,7 +45,7 @@ export default function SignUp() {
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ () => console.log("hi") } >Sign Up</button>                   
+                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ () => createUser() } >Sign Up</button>                   
                 </div>
               </form>
             </div>
