@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+// import React, { useState, useEffect } from "react";
 import './FeedPage.css';
 import Feeds from '../../components/Feeds/Feeds';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
+// import API from "../../utils/API";
+
 
 class FeedPage extends Component {
     state = {
@@ -28,3 +31,35 @@ class FeedPage extends Component {
 }
 
 export default FeedPage;
+
+// function FeedPage() {
+//     // Setting our component's initial state
+//     const [events, setEvents] = useState([])
+
+//     // Load all events and store them with setEvents
+//     useEffect(() => {
+//         loadEvents()
+//     }, [])
+
+//     // Loads all events and sets them to events
+//     function loadEvents() {
+//         API.getEvents()
+//             .then(res =>
+//                 setEvents(res.data)
+//             )
+//             .catch(err => console.log(err));
+//     };
+
+//     return (
+//         <div className='FeedPage'>
+//             <Navbar />
+//             <Feeds
+//                 className='feeds'
+//                 events={events} />
+//             {/* clicked={} /> */}
+//             <Footer />
+//         </div>
+//     )
+// }
+
+// export default FeedPage;
