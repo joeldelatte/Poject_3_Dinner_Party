@@ -13,6 +13,7 @@ export default function SignUp() {
 
     function handleSubmit(event) {
       event.preventDefault();
+      console.log(userName, passWord);
     };
 
     function createUser() {
