@@ -1,6 +1,6 @@
 import React, {useState}from "react";
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
-import Footer from "../../components/Footer/Footer"
+// import Footer from "../../components/Footer/Footer"
 import SignIn from "../../components/SignIn/SignIn";
 import SignUp from "../../components/SignUp/SignUp";
 
@@ -27,7 +27,6 @@ export default function Landing() {
             <button className="btn btn-outline-secondary btn-sm" style={styles.buttonSpacer} onClick={e => setSignIn(true)}>Sign up for a new account here.</button>
           </div>
           {(signIn && <SignUp />) || <SignIn />}
-          <Footer />
         </div>
     )
 }
