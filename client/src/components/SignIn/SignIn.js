@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import "./style.css";
 import API from "../../utils/API";
+import { useStoreContext } from "../utils/GlobalState";
+import {GET_CURRENT_USER} from "../utils/actions";
 
 export default function SignIn() {
 // functionality here
+
+    // const [state, dispatch ] = useStoreContext();
+
+    // const setCurrentUser = () => {
+    //   dispatch({ type: GET_CURRENT_USER });
+    // };
+
     const [userName, setUserName] = useState("");
     const [passWord, setPassWord] = useState("");
 
