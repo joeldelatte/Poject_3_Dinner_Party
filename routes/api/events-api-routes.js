@@ -27,12 +27,12 @@ module.exports = function(app) {
         });
     });
 
-    // POST route for saving new Events
-    app.post("api/posts", function(req, res) {
-        db.Events.create(req.body).then(function(dbEvents) {
-            res.json(dbEvents);
-        });
-    });
+    // // POST route for saving new Events
+    // app.post("api/events", function(req, res) {
+    //     db.Events.create(req.body).then(function(dbEvents) {
+    //         res.json(dbEvents);
+    //     });
+    // });
 
     // Dont know if we need an update function but I'm adding it
     app.put("/api/posts", function(req, res) {
