@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./containers/Landing/Landing";
 import FeedPage from './containers/Feed/FeedPage';
 import CreatePage from './containers/CreatePage/CreatePage';
 import DashboardPage from './containers/DashboardPage/DashboardPage';
 import './App.css';
+import {UserContext} from "./utils/UserContext";
 
 function App() {
+  const [globalUserName, setGlobalUserName] = useState("");
+
   return (
     <Router>
       <div>
         <Switch>
+        <UserContext.Provider value={{globalUserName, setGlobalUserName}}>
           <Route exact path='/'>
             <Landing />
           </Route>
@@ -23,6 +27,7 @@ function App() {
           <Route exact path='/dashboard'>
             <DashboardPage />
           </Route>
+        </UserContext.Provider>  
           <Landing />
           <FeedPage />
         </Switch>
