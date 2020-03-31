@@ -77,10 +77,6 @@ export default function Create() {
                     <div className="form-group col">
                         <input type="text" className="form-control form-row input-box" placeholder="Appetizer" onChange={e => setApp(e.target.value)} />
                         <textarea className="form-control form-row input-box" id="exampleFormControlTextarea1" placeholder="Appetizer Description" rows="4" onChange={e => setAppDes(e.target.value)}></textarea>
-<<<<<<< HEAD
-                        {/* <input type="text" className="form-control form-row input-box" placeholder="Appetizer Description" onChange={e => setPassWord(e.target.value)} /> */}
-=======
->>>>>>> d69f552806d98cc0c936e1376e8afb60bbf6d8c8
                     </div>
                     <div className="form-group col">
                         <input type="text" className="form-control form-row input-box" placeholder="Entree" onChange={e => setEntree(e.target.value)} />
