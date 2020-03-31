@@ -23,6 +23,7 @@ if (process.env.NODE_ENV === "production") {
 require("./routes/api/events-api-routes")(app);
 require("./routes/api/user-api-routes")(app);
 require("./routes/api/rsvp-api-routes")(app);
+require("./routes/api/create-api-routes")(app);
 
 const PORT = process.env.PORT || 3001;
 var db = require("./models");

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./containers/Landing/Landing";
 import FeedPage from './containers/Feed/FeedPage';
 import CreatePage from './containers/CreatePage/CreatePage';
+import DashboardPage from './containers/DashboardPage/DashboardPage';
 import './App.css';
 import {UserContext} from "./utils/UserContext";
 
@@ -23,7 +24,10 @@ function App() {
           <Route exact path='/create'>
             <CreatePage />
           </Route>
-        </UserContext.Provider>
+          <Route exact path='/dashboard'>
+            <DashboardPage />
+          </Route>
+        </UserContext.Provider>  
           <Landing />
           <FeedPage />
         </Switch>
