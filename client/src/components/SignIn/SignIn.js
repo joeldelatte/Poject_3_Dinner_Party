@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import "./style.css";
 import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
@@ -6,15 +6,15 @@ import {UserContext} from "../../utils/UserContext";
 export default function SignIn() {
 // functionality here
 
-    const {userName, setUserName} = useContext(UserContext);
-    // const {passWord, setPassWord} = useContext(UserContext);
+    const {globalUserName, setGlobalUserName} = useContext(UserContext);
+    const [passWord, setPassWord] = useState("");
 
     const userNameRef = useRef();
     const passWordRef = useRef();
 
     // I need to fix this. Possibly will work as before when I import and use useState for username and password again.
     function validateForm() {
-      return userNameRef.length > 0 && passWordRef.length > 0;
+      return globalUserName.length > 0 && passWord.length > 0;
     }
     // should I combine handleSubmit and loadUser?
     function handleSubmit(event) {
@@ -25,9 +25,8 @@ export default function SignIn() {
     function loadUser(passWordRef) {
       API.getUser(passWordRef)
       .then(res => {
-        setUserName(res.data.username);
-        // setPassWord(res.data.password);
-        // console.log(res.data.username);
+        setGlobalUserName(res.data.username);
+        console.log(globalUserName);
       })
       .catch(err => console.log(err));
     }
@@ -41,14 +40,14 @@ export default function SignIn() {
               <form className="card-body text-dark" onSubmit={ handleSubmit } >
                 <div className="form-group">
                   <label htmlFor="username" className="form-row">Username:</label>
-                  <input type="text" className="form-control form-row" placeholder="" ref={userNameRef}/>
+                  <input type="text" className="form-control form-row" placeholder="" ref={userNameRef} onChange={e => setGlobalUserName(e.target.value)}/>
                 </div>
                 <div className="form-group">
                   <label htmlFor="password" className="form-row">Password:</label>
-                  <input type="text" className="form-control form-row" placeholder="" ref={passWordRef}/>
+                  <input type="text" className="form-control form-row" placeholder="" ref={passWordRef} onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  <button type="submit" className="btn btn-success" disabled={ validateForm() } onClick={ () =>loadUser(passWordRef.current.value) } >Login</button>                   
+                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ () =>loadUser(passWord) } >Login</button>                   
                 </div>
               </form>
             </div>

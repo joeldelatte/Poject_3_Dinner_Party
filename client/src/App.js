@@ -7,16 +7,13 @@ import './App.css';
 import {UserContext} from "./utils/UserContext";
 
 function App() {
-  const [userName, setUserName] = useState("");
-  // const [passWord, setPassWord] = useState("");
-
-
+  const [globalUserName, setGlobalUserName] = useState("");
 
   return (
     <Router>
       <div>
         <Switch>
-        <UserContext.Provider value={{userName, setUserName}}>
+        <UserContext.Provider value={{globalUserName, setGlobalUserName}}>
           <Route exact path='/'>
             <Landing />
           </Route>
