@@ -28,7 +28,7 @@ module.exports = function(app) {
     });
 
     // POST route for saving new Events
-    app.post("api/posts", function(req, res) {
+    app.post("/api/posts", function(req, res) {
         db.Events.create(req.body).then(function(dbEvents) {
             res.json(dbEvents);
         });
