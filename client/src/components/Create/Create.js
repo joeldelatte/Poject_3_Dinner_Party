@@ -3,7 +3,6 @@ import "./Create.css";
 import API from "../../utils/API";
 
 export default function Create() {
-    // functionality here
     const [eventName, setEventName] = useState("");
     const [eventDate, setEventDate] = useState("");
     const [eventSeats, setEventSeats] = useState("");
@@ -34,10 +33,9 @@ export default function Create() {
         && dessertDes.length > 0;
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        // console.log(userName, passWord);
-    };
+    // function handleSubmit(event) {
+    //     event.preventDefault();
+    // };
 
     function createEvent() {
 
@@ -61,7 +59,8 @@ export default function Create() {
 
     return (
         <div className="container create-container">
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}> */}
+            <form>
                 <div className="form-row">
                     <div className="form-group col">
                         <input type="text" className="form-control form-row input-box" placeholder="Event Name" onChange={e => setEventName(e.target.value)} />
