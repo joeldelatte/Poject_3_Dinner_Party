@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./containers/Landing/Landing";
 import FeedPage from './containers/Feed/FeedPage';
 import CreatePage from './containers/CreatePage/CreatePage';
 import './App.css';
+import {UserContext} from "./utils/UserContext";
 
 function App() {
+  const [userName, setUserName] = useState("");
+  // const [passWord, setPassWord] = useState("");
+
+
+
   return (
     <Router>
       <div>
         <Switch>
+        <UserContext.Provider value={{userName, setUserName}}>
           <Route exact path='/'>
             <Landing />
           </Route>
@@ -19,6 +26,7 @@ function App() {
           <Route exact path='/create'>
             <CreatePage />
           </Route>
+        </UserContext.Provider>
           <Landing />
           <FeedPage />
         </Switch>
