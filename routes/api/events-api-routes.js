@@ -1,6 +1,15 @@
 var db = require("../../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
+
+    //Tad made this to see if I could get Postman to work.  It does, but cannot get React to work now...
+    app.get("/api/events", function (req, res) {
+        db.Events.findAll({}).then(function (dbEvents) {
+            res.json(dbEvents);
+        });
+    });
+    
+
     // this findall will be used to populate the feed 
     app.get("/api/events", function(req, res) {
         var query = {};
@@ -14,7 +23,7 @@ module.exports = function(app) {
             res.json(dbEvents);
         });
     });
-    
+
     // this findOne may not be necessary?...
     app.get("/api/posts/:id", function(req, res) {
         db.Events.findOne({
@@ -28,11 +37,11 @@ module.exports = function(app) {
     });
 
     // // POST route for saving new Events
-    // app.post("api/events", function(req, res) {
-    //     db.Events.create(req.body).then(function(dbEvents) {
-    //         res.json(dbEvents);
-    //     });
-    // });
+    app.post("api/events", function(req, res) {
+        db.Events.create(req.body).then(function(dbEvents) {
+            res.json(dbEvents);
+        });
+    });
 
     // Dont know if we need an update function but I'm adding it
     app.put("/api/posts", function(req, res) {

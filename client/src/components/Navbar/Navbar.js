@@ -1,11 +1,13 @@
-import React from "react";
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-export default function navbar() {
+export default function navbar(props) {
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-fixed-top">
+            <Link className='loggin-user' to='/dashboard'>{props.currentUser}</Link>
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav ml-auto nav-padding">
                         <li className="nav-item dropdown">

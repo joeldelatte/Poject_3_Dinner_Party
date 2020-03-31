@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
+import {UserContext} from "../../utils/UserContext";
 import './CreatePage.css';
 import Create from '../../components/Create/Create';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 
 
-class CreatePage extends Component {
+export default function CreatePage() {
 
-    render() {
+    const {globalUserName, setGlobalUserName} = useContext(UserContext);
+
         return (
             <div className='CreatePage'>
-                <Navbar />
+                <Navbar currentUser={globalUserName} />
                 <Create />
                 <Footer />
             </div>
-        )
-    }
+        );
 }
 
-export default CreatePage;
+// export default CreatePage;
