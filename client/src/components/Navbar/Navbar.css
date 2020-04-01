@@ -7,3 +7,24 @@
     margin-bottom: 60px;
     background-color: rgb(231, 234, 240);
 }
+
+.loggin-user {
+    font-size: 20px;
+    color: green;
+
+}
+.loggin-user:link {
+    text-decoration: none;
+  }
+  
+  .loggin-user:visited {
+    text-decoration: none;
+}
+  
+.loggin-user:hover {
+    text-decoration: none;
+}
+  
+.loggin-user:active {
+    text-decoration: none;
+}

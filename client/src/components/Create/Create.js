@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from 'react';
+import {UserContext} from "../../utils/UserContext";
 import "./Create.css";
 import API from "../../utils/API";
 
@@ -16,21 +17,22 @@ export default function Create() {
     const [entreeDes, setEntreeDes] = useState("");
     const [dessert, setDessert] = useState("");
     const [dessertDes, setDessertDes] = useState("");
+    const {globalUserName, setGlobalUserName} = useContext(UserContext);
 
     function validateForm() {
-        return eventName.length > 0 
-        && eventDate.length > 0
-        && eventSeats.length > 0
-        && street.length > 0
-        && city.length > 0
-        && state.length > 0
-        && zip.length > 0
-        && app.length > 0
-        && appDes.length > 0
-        && entree.length > 0
-        && entreeDes.length > 0
-        && dessert.length > 0
-        && dessertDes.length > 0;
+        return eventName.length > 0
+            && eventDate.length > 0
+            && eventSeats.length > 0
+            && street.length > 0
+            && city.length > 0
+            && state.length > 0
+            && zip.length > 0
+            && app.length > 0
+            && appDes.length > 0
+            && entree.length > 0
+            && entreeDes.length > 0
+            && dessert.length > 0
+            && dessertDes.length > 0;
     }
 
     // function handleSubmit(event) {
@@ -53,6 +55,7 @@ export default function Create() {
             entree_description: entreeDes,
             dessert: dessert,
             dessert_description: dessertDes,
+            UserId: globalUserName.id
         })
             .then(res => console.log(res));
     };
@@ -60,6 +63,7 @@ export default function Create() {
     return (
         <div className="container create-container">
             {/* <form onSubmit={handleSubmit}> */}
+            {/* <div className='create-heading'>Create an Event</div> */}
             <form>
                 <div className="form-row">
                     <div className="form-group col">

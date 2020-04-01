@@ -1,7 +1,8 @@
 import React from 'react';
 import Feed from './Feed/Feed';
 
-const feeds = (props) => {
+
+export default function feeds(props) {
     return props.events.map((event, index) => {
         return <Feed
             click={() => props.clicked(index)}
@@ -16,5 +17,3 @@ const feeds = (props) => {
         />
     });
 };
-
-export default feeds;
