@@ -1,8 +1,10 @@
-import React, {useState}from "react";
+import React, {useState, useContext} from "react";
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import Footer from "../../components/Footer/Footer"
 import SignIn from "../../components/SignIn/SignIn";
 import SignUp from "../../components/SignUp/SignUp";
+// import {UserContext} from "../../utils/UserContext";
+
 
 const styles = {
   keepIt: {
@@ -18,15 +20,18 @@ const styles = {
 
 export default function Landing() {
 
-  const [signIn, setSignIn] = useState(false);
+  // const {globalUserName, setGlobalUserName} = useContext(UserContext);
+  const [signUp, setSignUp] = useState(false);
   
     return (
         <div className="container" style={styles.keepIt}>
           <Jumbotron />
-          <div className="row justify-content-center">
-            <button className="btn btn-outline-secondary btn-sm" style={styles.buttonSpacer} onClick={e => setSignIn(true)}>Sign up for a new account here.</button>
-          </div>
-          {(signIn && <SignUp />) || <SignIn />}
+          {(!signUp && <div className="row justify-content-center">
+            <button className="btn btn-outline-secondary btn-sm" style={styles.buttonSpacer} onClick={e => setSignUp(true)}>Sign up for a new account here.</button>
+          </div>) || <div className="row justify-content-center">
+            <button className="btn btn-outline-secondary btn-sm" style={styles.buttonSpacer} onClick={e => setSignUp(false)}>Sign into your new account here.</button>
+          </div>}
+          {(signUp && <SignUp />) || <SignIn />}
           <Footer />
         </div>
     )

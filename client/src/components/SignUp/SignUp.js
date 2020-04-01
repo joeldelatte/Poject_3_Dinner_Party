@@ -1,28 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Link  } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
+import {UserContext} from "../../utils/UserContext";
+
 
 export default function SignUp() {
 // functionality here
-    const [userName, setUserName] = useState("");
-    const [passWord, setPassWord] = useState("");
+const {globalUserName, setGlobalUserName} = useContext(UserContext);
+const [passWord, setPassWord] = useState("");
 
     function validateForm() {
-      return userName.length > 0 && passWord.length > 0;
+      return globalUserName.length > 0 && passWord.length > 0;
     }
 
     function handleSubmit(event) {
       event.preventDefault();
-      console.log(userName, passWord);
+      console.log(globalUserName, passWord);
     };
 
     function createUser() {
 
       API.postUser({
-        username: userName,
+        username: globalUserName,
         password: passWord
       })
-      .then(res => console.log(res));
+      .then(res => {
+        setGlobalUserName(res.data.username)
+      });
     };
 
     return (
@@ -35,18 +40,20 @@ export default function SignUp() {
               <form className="card-body text-dark" onSubmit={ handleSubmit } >
                 <div className="form-group">
                   <label htmlFor="username" className="form-row">Username:</label>
-                  <input type="text" className="form-control form-row" placeholder="" onChange={e => setUserName(e.target.value)}/>
+                  <input type="text" className="form-control form-row" placeholder="" onChange={e => setGlobalUserName(e.target.value)}/>
                 </div>
                 <div className="form-group">
                   <label htmlFor="password" className="form-row">Password:</label>
-                  <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
+                  <input type="text" className="form-control form-row" placeholder="" />
                 </div>
                 <div className="form-group">
                   <label htmlFor="password" className="form-row">Confirm Password:</label>
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  <button type="submit" className="btn btn-success" disabled={ !validateForm() } onClick={ () => createUser() } >Sign Up</button>                   
+                  {(validateForm() &&
+                    <Link  to="/events" role="button" type="submit" className="btn btn-success" onClick={ () => createUser() } >Sign Up</Link>) 
+                    || <Link role="button" className="btn btn-success">Sign Up</Link>} 
                 </div>
               </form>
             </div>
