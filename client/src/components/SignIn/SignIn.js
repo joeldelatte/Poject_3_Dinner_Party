@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link  } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
 
-export default function SignIn(props) {
+export default function SignIn() {
 // functionality here
 
     const {globalUserName, setGlobalUserName} = useContext(UserContext);
@@ -19,10 +19,15 @@ export default function SignIn(props) {
       event.preventDefault();
     }
 
+    useEffect(() => {
+      loadUser();
+    }, [])
+
     function loadUser(passWord) {
       API.getUser(passWord)
       .then(res => {
         setGlobalUserName(res.data.username);
+        console.log(res.data)
         console.log(globalUserName);
       })
       .catch(err => console.log(err));

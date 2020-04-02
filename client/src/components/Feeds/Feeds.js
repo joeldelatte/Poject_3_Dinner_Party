@@ -1,16 +1,16 @@
 import React from 'react';
 import Feed from './Feed/Feed';
 
+export default function Feeds(props) {
 
-export default function feeds(props) {
-    function click(index) {
-        console.log(index);
+    function click(event) {
+        console.log(event);
     }
     return props.events.map((event, index) => {
         return (
 
             <Feed
-            click={() => click(index)}
+            click={() => click(event)}
             name={event.event_name}
             app={event.app}
             appdes={event.app_description}

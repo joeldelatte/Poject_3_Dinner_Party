@@ -26,7 +26,7 @@ const [passWord, setPassWord] = useState("");
         password: passWord
       })
       .then(res => {
-        setGlobalUserName(res.data.username)
+        setGlobalUserName(res.data.username);
       });
     };
 

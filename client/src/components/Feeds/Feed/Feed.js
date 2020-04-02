@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './Feed.css';
 import map from './map.png';
 
-const feed = (props) => {
-    
+const Feed = (props) => {
+
     return (
         <div className='container feed-container'>
             <div className='row'>
@@ -66,4 +66,4 @@ const feed = (props) => {
     )
 };
 
-export default feed;
+export default Feed;
