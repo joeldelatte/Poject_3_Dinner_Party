@@ -26,6 +26,8 @@ td {
 .menu-table {
     margin-left: 15px;
     margin-top: 15px;
+    border-spacing: 20px;
+    border-collapse: separate;
 }
 
 .button-row {
