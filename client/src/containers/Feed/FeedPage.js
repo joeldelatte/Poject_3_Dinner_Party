@@ -48,7 +48,7 @@ export default function FeedPage() {
             .catch(err => console.log(err));
     };
 
-    const { globalUserName, setGlobalUserName } = useContext(UserContext);
+    const { globalUserName } = useContext(UserContext);
 
     return (
         <div className='FeedPage'>

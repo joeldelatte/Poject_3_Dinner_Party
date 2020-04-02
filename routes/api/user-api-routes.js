@@ -19,6 +19,17 @@ module.exports = function(app) {
         });
     });
 
+    //Tad created this to try and get the userId
+    app.get("/api/users/:username", function(req, res) {
+        db.Users.findOne({
+            where: {
+                username: req.params.username
+            }
+        }).then(function(dbUsers) {
+            res.json(dbUsers);
+        });
+    });
+
     app.post("/api/users", function(req, res) {
         db.Users.create(req.body).then(function(dbUsers) {
             res.json(dbUsers);
