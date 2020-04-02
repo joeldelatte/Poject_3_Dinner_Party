@@ -42,7 +42,7 @@ export default function Create() {
 
     useEffect(() => {
         loadUser(globalUserName)
-      });
+      }, []);
 
     function loadUser(username) {
         API.getUsername(username)
