@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from "../../utils/UserContext";
 import './FeedPage.css';
 import Feeds from '../../components/Feeds/Feeds';
@@ -33,16 +33,29 @@ import API from "../../utils/API";
 // export default FeedPage;
 
 export default function FeedPage() {
-    const {globalUserName, setGlobalUserName} = useContext(UserContext);
-    const eventsState = useState(API.getEvents());
-    console.log(eventsState);
+
+    const [events, setEvents] = useState([])
+
+    useEffect(() => {
+        loadEvents()
+      }, [])
+
+    function loadEvents() {
+        API.getEvents()
+            .then(res =>
+                setEvents(res.data)
+            )
+            .catch(err => console.log(err));
+    };
+
+    const { globalUserName, setGlobalUserName } = useContext(UserContext);
 
     return (
         <div className='FeedPage'>
             <Navbar currentUser={globalUserName} />
             <Feeds
                 className='feeds'
-                events={eventsState} />
+                events={events} />
             {/* clicked={} /> */}
             <Footer />
         </div>

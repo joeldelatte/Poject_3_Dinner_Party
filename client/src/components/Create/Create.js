@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import {UserContext} from "../../utils/UserContext";
+import { UserContext } from "../../utils/UserContext";
 import "./Create.css";
 import API from "../../utils/API";
 
@@ -17,7 +17,7 @@ export default function Create() {
     const [entreeDes, setEntreeDes] = useState("");
     const [dessert, setDessert] = useState("");
     const [dessertDes, setDessertDes] = useState("");
-    const {globalUserName, setGlobalUserName} = useContext(UserContext);
+    const { globalUserName, setGlobalUserName } = useContext(UserContext);
 
     function validateForm() {
         return eventName.length > 0
@@ -35,9 +35,9 @@ export default function Create() {
             && dessertDes.length > 0;
     }
 
-    // function handleSubmit(event) {
-    //     event.preventDefault();
-    // };
+    function handleSubmit(event) {
+        event.preventDefault();
+    };
 
     function createEvent() {
 
@@ -62,9 +62,8 @@ export default function Create() {
 
     return (
         <div className="container create-container">
-            {/* <form onSubmit={handleSubmit}> */}
-            {/* <div className='create-heading'>Create an Event</div> */}
-            <form>
+            <form onSubmit={handleSubmit}>
+                {/* <div className='create-heading'>Create an Event</div> */}
                 <div className="form-row">
                     <div className="form-group col">
                         <input type="text" className="form-control form-row input-box" placeholder="Event Name" onChange={e => setEventName(e.target.value)} />
