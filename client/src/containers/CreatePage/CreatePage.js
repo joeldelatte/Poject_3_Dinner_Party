@@ -18,5 +18,3 @@ export default function CreatePage() {
             </div>
         );
 }
-
-// export default CreatePage;
