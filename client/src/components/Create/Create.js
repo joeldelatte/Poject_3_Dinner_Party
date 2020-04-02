@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Link  } from "react-router-dom";
 import { UserContext } from "../../utils/UserContext";
 import "./Create.css";
 import API from "../../utils/API";
@@ -102,7 +103,8 @@ export default function Create() {
 
                     </div>
                     <div className="form-group col" >
-                        <button type="submit" className="btn btn-success create-button" disabled={!validateForm()} onClick={() => createEvent()} >Create Event</button>
+                        {(validateForm() && <Link to="/dashboard" role="button" type="submit" className="btn btn-success create-button" disabled={!validateForm()} onClick={() => createEvent()} >Create Event</Link>) 
+                        || <Link role="button" className="btn btn-success create-button" >Create Event</Link>}
                     </div>
                 </div>
 

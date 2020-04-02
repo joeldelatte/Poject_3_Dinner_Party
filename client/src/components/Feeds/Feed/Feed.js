@@ -3,6 +3,7 @@ import './Feed.css';
 import map from './map.png';
 
 const feed = (props) => {
+    
     return (
         <div className='container feed-container'>
             <div className='row'>
@@ -56,7 +57,7 @@ const feed = (props) => {
                             </form>
                             <button
                                 className='rsvp-button'
-                                onClick={props.click}>RSVP</button>
+                                onClick={() => props.click()}>RSVP</button>
                         </div>
                     </div>
                 </div>
