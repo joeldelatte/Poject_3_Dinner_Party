@@ -11,7 +11,7 @@ import API from "../../utils/API";
 
 export default function DashboardPage() {
 
-    const {globalUserName, setGlobalUserName} = useContext(UserContext);
+    const { globalUserName } = useContext(UserContext);
     const eventsState = useState(API.getEvent());
     console.log(eventsState);
 
