@@ -7,8 +7,8 @@ export default {
     postUser: function(userData) {
         return http.post("api/users", userData);
     },
-    getEvent: function (id) {
-        return http.get("/api/events/" + id);
+    getEvent: function (UserId) {
+        return http.get("/api/events/" + UserId);
     },
     getEvents: function () {
         return http.get("/api/events");
