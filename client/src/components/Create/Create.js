@@ -69,7 +69,7 @@ export default function Create() {
             entree_description: entreeDes,
             dessert: dessert,
             dessert_description: dessertDes,
-            UserId: usernameId.id
+            UserId: usernameId
         })
             .then(res => console.log(res));
     };

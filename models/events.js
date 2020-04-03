@@ -59,11 +59,11 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Events.associate = function (models) {
-        // Events.belongsTo(models.Users, {
-        //     foreignKey: {
-        //         allowNull: false
-        //     }
-        // });
+        Events.belongsTo(models.Users, {
+            foreignKey: {
+                allowNull: true
+            }
+        });
 
         Events.hasMany(models.Rsvps, {
             foreignKey: {
