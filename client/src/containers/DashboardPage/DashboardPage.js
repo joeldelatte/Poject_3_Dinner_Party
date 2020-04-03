@@ -12,6 +12,7 @@ import API from "../../utils/API";
 export default function DashboardPage() {
 
     const [events, setEvents] = useState([]);
+    const usernameId = useS
     const [usernameId, setUsernameId] = useState([]);
     const { globalUserName } = useContext(UserContext);
 
@@ -27,7 +28,7 @@ export default function DashboardPage() {
     //loadEvents works if you hard code a UserId number in parenthesis
     //somehow, I need to get the global user id into these parenthesis.  It worked on the create page, but can't get it to work on this page...
     useEffect(() => {
-        loadEvents(loadUser(globalUserName))
+        loadEvents(loadUser(globalUserName.id))
       }, [])
 
     function loadEvents(UserId) {
