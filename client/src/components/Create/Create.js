@@ -76,7 +76,6 @@ export default function Create() {
     return (
         <div className="container create-container">
             <form onSubmit={handleSubmit}>
-                {/* <div className='create-heading'>Create an Event</div> */}
                 <div className="form-row">
                     <div className="form-group col">
                         <input type="text" className="form-control form-row input-box" placeholder="Event Name" onChange={e => setEventName(e.target.value)} />

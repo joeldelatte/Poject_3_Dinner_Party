@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Feed.css';
 import map from './map.png';
 
@@ -56,7 +57,7 @@ const feed = (props) => {
                             </form>
                             <button
                                 className='rsvp-button'
-                                onClick={props.click}>RSVP</button>
+                                onClick={() => props.click()}><Link className='rsvp-link' to="/dashboard">RSVP</Link></button>
                         </div>
                     </div>
                 </div>

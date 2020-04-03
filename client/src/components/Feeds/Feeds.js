@@ -3,9 +3,15 @@ import Feed from './Feed/Feed';
 
 
 export default function feeds(props) {
-    return props.events.map((event, index) => {
+
+    function click(event) {
+        console.log(event.UserId);
+    }
+
+
+    return props.events.map((event) => {
         return <Feed
-            click={() => props.clicked(index)}
+            click={() => click(event)}
             name={event.event_name}
             app={event.app}
             appdes={event.app_description}

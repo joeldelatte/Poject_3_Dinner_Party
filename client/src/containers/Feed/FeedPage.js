@@ -31,7 +31,6 @@ export default function FeedPage() {
             <Feeds
                 className='feeds'
                 events={events} />
-            {/* clicked={} /> */}
             <Footer />
         </div>
     )

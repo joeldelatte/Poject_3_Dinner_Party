@@ -10,27 +10,27 @@ module.exports = function (sequelize, DataTypes) {
         },
         event_date: {
             type: DataTypes.DATEONLY,
-            allowNull: false,
+            allowNull: true,
         },
         event_seats: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         event_address: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         event_city: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         event_state: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         event_zip: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         app: {
             type: DataTypes.STRING,
