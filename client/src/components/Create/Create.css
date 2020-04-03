@@ -20,3 +20,23 @@
     margin-bottom: 10px;
     font-size: 30px;
 }
+
+.create-link {
+    color: white;
+}
+
+.create-link:link {
+    text-decoration: none;
+}
+
+.create-link:visited {
+    text-decoration: none;
+}
+
+.create-link:hover {
+    text-decoration: none;
+}
+
+.create-link:active {
+    text-decoration: none;
+}

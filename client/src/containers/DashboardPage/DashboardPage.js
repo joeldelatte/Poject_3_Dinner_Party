@@ -12,8 +12,7 @@ import API from "../../utils/API";
 export default function DashboardPage() {
 
     const [events, setEvents] = useState([]);
-    let usernameId = ([]);
-    // const [usernameId, setUsernameId] = useState([]);
+    const [usernameId, setUsernameId] = useState([]);
     const { globalUserName } = useContext(UserContext);
 
     useEffect(() => {
