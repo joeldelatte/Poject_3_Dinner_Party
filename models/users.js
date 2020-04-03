@@ -21,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
     Users.associate = function (models) {
         Users.hasMany(models.Events, {
             foreignKey: {
-                allowNull: true
+                allowNull: false
             }
         });
 
