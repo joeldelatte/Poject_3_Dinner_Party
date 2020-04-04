@@ -59,7 +59,7 @@ This application is made with Sequelize, MySQL, Node, Express, JS, React, CSS wi
 #### Pictures of Application
 
 <br><br>
-<img src='./client/Pics/dinnerparty1.JPG'>
+<img src='/client/Pics/dinnerparty1.JPG'>
 <br><br>
 <img src='./client/Pics/dinnerparty2.JPG'>
 <br><br>
