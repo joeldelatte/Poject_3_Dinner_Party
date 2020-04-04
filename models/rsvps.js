@@ -9,12 +9,5 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    // Rsvps.associate = function (models) {
-    //     Rsvps.belongsTo(models.Events, {
-    //         foreignKey: 'fk_UserId',
-    //         targetKey: 'UserId'
-    //     });
-    // };
-
     return Rsvps;
 };
