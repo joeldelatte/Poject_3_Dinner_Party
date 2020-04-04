@@ -10,29 +10,40 @@ import API from "../../utils/API";
 
 
 export default function DashboardPage() {
-
+    const [rsvpEvents, setRsvpEvents] = useState([]);
     const [events, setEvents] = useState([]);
-    const [usernameId, setUsernameId] = useState([]);
     const { globalUserName } = useContext(UserContext);
 
     useEffect(() => {
         loadUser(globalUserName)
     }, [])
 
-    async function loadUser(username) {
+    function loadUser(username) {
         API.getUsername(username)
             .then(res =>
-                setUsernameId(res.data)
+                loadEvents(res.data.id)
             )
+            // .then(res =>
+            //     loadRsvpEvents(res.data.id)
+            // )
+
     };
-
-
-    // console.log(usernameId);
 
     function loadEvents(UserId) {
         API.getEvent(UserId)
             .then(res =>
                 setEvents(res.data)
+            )
+    };
+
+    useEffect(() => {
+        loadRsvpEvents(events.UserId)
+    }, [])
+
+    function loadRsvpEvents(UserId) {
+        API.getRsvpEvents(UserId)
+            .then(res =>
+                setRsvpEvents(res.data)
             )
     };
 
@@ -51,7 +62,7 @@ export default function DashboardPage() {
                         <Heading>Your RSVPs</Heading>
                         <YourRSVPS
                             className='YourEvents'
-                            events={events} />
+                            events={rsvpEvents} />
                     </div>
                 </div>
             </div>

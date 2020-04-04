@@ -5,7 +5,7 @@ export default {
         return http.get("/api/users/" + password);
     },
     postUser: function(userData) {
-        return http.post("api/users", userData);
+        return http.post("/api/users", userData);
     },
     getEvent: function (UserId) {
         return http.get("/api/events/" + UserId);
@@ -18,5 +18,11 @@ export default {
     },
     createEvent: function(eventData) {
         return http.post("/api/create", eventData);
+    },
+    postRsvp: function(rsvpData) {
+        return http.post("/api/rsvp", rsvpData);
+    },
+    getRsvpEvents: function (UserId) {
+        return http.get("/api/rsvp/events", UserId);
     }
 };

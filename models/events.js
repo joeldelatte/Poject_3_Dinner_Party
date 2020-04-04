@@ -67,8 +67,8 @@ module.exports = function (sequelize, DataTypes) {
 
         Events.hasMany(models.Rsvps, {
             foreignKey: {
-                allowNull: false
-            }
+                allowNull: false,
+            },
         });
     };
 

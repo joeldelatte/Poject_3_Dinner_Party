@@ -1,13 +1,6 @@
 var db = require("../../models")
 
 module.exports = function(app) {
-    app.get("/api/users", function(req, res) {
-        db.Users.findAll({
-            include: [db.Events]
-        }).then(function(dbUsers){
-            res.json(dbUsers);
-        });
-    });
 
     app.get("/api/users/:password", function(req, res) {
         db.Users.findOne({
@@ -19,7 +12,6 @@ module.exports = function(app) {
         });
     });
 
-    //Tad created this to try and get the userId
     app.get("/api/users/:username", function(req, res) {
         db.Users.findOne({
             where: {
