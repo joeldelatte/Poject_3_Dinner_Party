@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { UserContext } from "../../utils/UserContext";
 import "./Create.css";
 import API from "../../utils/API";
@@ -42,7 +43,7 @@ export default function Create() {
 
     useEffect(() => {
         loadUser(globalUserName)
-      }, []);
+    }, []);
 
     function loadUser(username) {
         API.getUsername(username)
@@ -114,7 +115,12 @@ export default function Create() {
 
                     </div>
                     <div className="form-group col" >
-                        <button type="submit" className="btn btn-success create-button" disabled={!validateForm()} onClick={() => createEvent()} >Create Event</button>
+
+                        <button type="submit" className="btn btn-success create-button" disabled={!validateForm()}
+                            onClick={() => createEvent()} >
+                            <Link className='create-link' to="/dashboard">Create Event</Link>
+                        </button>
+
                     </div>
                 </div>
 

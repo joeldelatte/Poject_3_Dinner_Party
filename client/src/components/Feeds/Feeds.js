@@ -1,11 +1,21 @@
 import React from 'react';
 import Feed from './Feed/Feed';
+import API from "../../utils/API";
 
 
 export default function feeds(props) {
 
     function click(event) {
+
+        API.postRsvp({
+            UserId: event.UserId,
+            EventId: event.id,
+            // event_seats: eventSeats
+        })
+            .then(res => console.log(res.data));
+
         console.log(event.UserId);
+        console.log(event.id);
     }
 
 
