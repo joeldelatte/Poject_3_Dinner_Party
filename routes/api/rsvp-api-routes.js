@@ -1,4 +1,6 @@
 var db = require("../../models")
+var sequelize = require("sequelize");
+
 
 module.exports = function (app) {
     app.get("/api/rsvp", function (req, res) {
@@ -26,13 +28,16 @@ module.exports = function (app) {
     // });
 
     app.get("/api/rsvp/events", function (req, res) {
-        db.Events.findAll({
-            where: sequelize.where(
-                db.Events.sequelize.col('UserId'),
-                db.Rsvps.sequelize.col('UserId')
-            )
+        db.Events.findAll(
+            {
+
+            // where: sequelize.where(
+            //     db.Events.sequelize.col('UserId'),
+            //     db.Rsvps.sequelize.col('UserId')
+            // ),
             //   include: [db.Rsvps]
-        }).then(function (dbEvents) {
+
+            }).then(function (dbEvents) {
             res.json(dbEvents);
         });
     });

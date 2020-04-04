@@ -48,7 +48,7 @@ export default function Create() {
     function loadUser(username) {
         API.getUsername(username)
             .then(res =>
-                setUsernameId(res.data)
+                setUsernameId(res.data.id)
             )
             .catch(err => console.log(err));
     };
@@ -69,7 +69,7 @@ export default function Create() {
             entree_description: entreeDes,
             dessert: dessert,
             dessert_description: dessertDes,
-            UserId: usernameId.id
+            UserId: usernameId
         })
             .then(res => console.log(res));
     };
