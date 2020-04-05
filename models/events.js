@@ -10,27 +10,27 @@ module.exports = function (sequelize, DataTypes) {
         },
         event_date: {
             type: DataTypes.DATEONLY,
-            allowNull: true,
+            allowNull: false,
         },
         event_seats: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
         },
         event_address: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         event_city: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         event_state: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         event_zip: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
         },
         app: {
             type: DataTypes.STRING,
@@ -59,11 +59,6 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Events.associate = function (models) {
-        // Events.belongsTo(models.Users, {
-        //     foreignKey: {
-        //         allowNull: false
-        //     }
-        // });
 
         Events.hasMany(models.Rsvps, {
             foreignKey: {

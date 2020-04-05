@@ -2,6 +2,9 @@
   "name": "project-3_dinner_party",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "13.12.x"
+  },
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -16,6 +19,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-install": "2.1.0",
+    "@babel/compat-data": "7.9.0",
+    "@babel/preset-env": "7.9.0",
     "concurrently": "^4.1.0",
     "nodemon": "^1.18.7"
   },
