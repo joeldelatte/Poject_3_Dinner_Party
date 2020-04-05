@@ -2,9 +2,6 @@
   "name": "project-3_dinner_party",
   "version": "1.0.0",
   "description": "",
-  "engines": {
-    "node": "6.11.1"
-  },
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
