@@ -1,9 +1,10 @@
 const express = require("express");
-// const routes = require("./routes");
+const routes = require("./routes");
+const router = require("express").Router();
 const app = express();
 const bodyParser = require("body-parser");
-
 const cors = require("cors");
+
 var corsOptions = {
     origin: "http://localhost:3000"
 };
@@ -15,6 +16,10 @@ app.use(express.json());
 app.use(bodyParser.json());
   
 app.use(bodyParser.urlencoded({ extended: true }));
+
+router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
