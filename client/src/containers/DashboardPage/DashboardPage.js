@@ -21,7 +21,7 @@ export default function DashboardPage() {
     function loadUser(username) {
         API.getUsername(username)
             .then(res =>
-                loadEvents(res.data.UserId)
+                loadEvents(res.data.id)
             )
             // .then(res =>
             //     loadRsvpEvents(res.data.id)
