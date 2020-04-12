@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from "../../utils/UserContext";
+import { UserIdContext } from "../../utils/UserIdContext";
 import './DashboardPage.css';
 import YourEvents from '../../components/Dashboard/YourEvents';
 import YourRSVPS from '../../components/Dashboard/YourRSVPS';
@@ -13,20 +14,14 @@ export default function DashboardPage() {
     const [rsvpEvents, setRsvpEvents] = useState([]);
     const [events, setEvents] = useState([]);
     const { globalUserName } = useContext(UserContext);
+    const { globalUserId } = useContext(UserIdContext);
 
     useEffect(() => {
-        loadUser(globalUserName)
+        loadUser(globalUserId)
     }, [])
 
-    function loadUser(username) {
-        API.getUsername(username)
-            .then(res =>
-                loadEvents(res.data.id)
-            )
-            // .then(res =>
-            //     loadRsvpEvents(res.data.id)
-            // )
-
+    function loadUser(globalUserId) {
+                loadEvents(globalUserId)
     };
 
     function loadEvents(UserId) {
