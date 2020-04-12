@@ -3,11 +3,13 @@ import { Link  } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
+import {UserIdContext} from "../../utils/UserIdContext";
 
-export default function SignIn(props) {
+export default function SignIn() {
 // functionality here
 
     const {globalUserName, setGlobalUserName} = useContext(UserContext);
+    const {globalUserId, setGlobalUserId} = useContext(UserIdContext);
     const [passWord, setPassWord] = useState("");
 
     // I need to fix this. Possibly will work as before when I import and use useState for username and password again.
@@ -19,11 +21,15 @@ export default function SignIn(props) {
       event.preventDefault();
     }
 
+    function createGlobalUserData(res) {
+      setGlobalUserId(res.data.id);
+      setGlobalUserName(res.data.username);
+    }
+
     function loadUser(passWord) {
       API.getUser(passWord)
       .then(res => {
-        setGlobalUserName(res.data.username);
-        console.log(globalUserName);
+       createGlobalUserData(res) 
       })
       .catch(err => console.log(err));
     }

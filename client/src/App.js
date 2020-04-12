@@ -6,14 +6,17 @@ import CreatePage from './containers/CreatePage/CreatePage';
 import DashboardPage from './containers/DashboardPage/DashboardPage';
 import './App.css';
 import {UserContext} from "./utils/UserContext";
+import { UserIdContext } from './utils/UserIdContext';
 
 function App() {
   const [globalUserName, setGlobalUserName] = useState("");
+  const [globalUserId, setGlobalUserId] = useState("")
 
   return (
     <Router>
       <div>
         <Switch>
+        <UserIdContext.Provider value={{globalUserId, setGlobalUserId}}>
         <UserContext.Provider value={{globalUserName, setGlobalUserName}}>
           <Route exact path='/'>
             <Landing />
@@ -27,7 +30,8 @@ function App() {
           <Route exact path='/dashboard'>
             <DashboardPage />
           </Route>
-        </UserContext.Provider>  
+        </UserContext.Provider>
+        </UserIdContext.Provider>  
           <Landing />
           <FeedPage />
         </Switch>
