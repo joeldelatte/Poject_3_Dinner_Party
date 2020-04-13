@@ -17,12 +17,8 @@ export default function DashboardPage() {
     const { globalUserId } = useContext(UserIdContext);
 
     useEffect(() => {
-        loadUser(globalUserId)
+        loadEvents(globalUserId)
     }, [])
-
-    function loadUser(globalUserId) {
-                loadEvents(globalUserId)
-    };
 
     function loadEvents(UserId) {
         API.getEvent(UserId)

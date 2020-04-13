@@ -3,11 +3,14 @@ import { Link  } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
+import { UserIdContext } from "../../utils/UserIdContext";
 
 
 export default function SignUp() {
 // functionality here
 const {globalUserName, setGlobalUserName} = useContext(UserContext);
+const {globalUserId, setGlobalUserId} = useContext(UserIdContext);
+
 const [passWord, setPassWord] = useState("");
 
     function validateForm() {
@@ -19,6 +22,11 @@ const [passWord, setPassWord] = useState("");
       console.log(globalUserName, passWord);
     };
 
+    function createGlobalUserData(res) {
+      setGlobalUserId(res.data.id);
+      setGlobalUserName(res.data.username);
+    }
+
     function createUser() {
 
       API.postUser({
@@ -26,7 +34,7 @@ const [passWord, setPassWord] = useState("");
         password: passWord
       })
       .then(res => {
-        setGlobalUserName(res.data.username);
+        createGlobalUserData(res);
       });
     };
 

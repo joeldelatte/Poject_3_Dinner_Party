@@ -20,7 +20,7 @@ export default function SignIn() {
 
     function handleSubmit(event) {
       event.preventDefault();
-
+      console.log(globalUserId);
     }
 
     function createGlobalUserData(res) {

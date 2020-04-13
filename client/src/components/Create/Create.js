@@ -19,9 +19,9 @@ export default function Create() {
     const [entreeDes, setEntreeDes] = useState("");
     const [dessert, setDessert] = useState("");
     const [dessertDes, setDessertDes] = useState("");
-    const [usernameId, setUsernameId] = useState("");
+    // const [usernameId, setUsernameId] = useState("");
     // const { globalUserName } = useContext(UserContext);
-    const { globalUserId, setGlobalUserId } = useContext(UserIdContext);
+    const { globalUserId } = useContext(UserIdContext);
 
     function validateForm() {
         return eventName.length > 0
