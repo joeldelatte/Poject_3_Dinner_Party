@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from "../../utils/UserContext";
+// import { UserContext } from "../../utils/UserContext";
+import { UserIdContext} from "../../utils/UserIdContext";
 import "./Create.css";
 import API from "../../utils/API";
 
@@ -19,7 +20,8 @@ export default function Create() {
     const [dessert, setDessert] = useState("");
     const [dessertDes, setDessertDes] = useState("");
     const [usernameId, setUsernameId] = useState("");
-    const { globalUserName } = useContext(UserContext);
+    // const { globalUserName } = useContext(UserContext);
+    const { globalUserId, setGlobalUserId } = useContext(UserIdContext);
 
     function validateForm() {
         return eventName.length > 0
@@ -41,17 +43,17 @@ export default function Create() {
         event.preventDefault();
     };
 
-    useEffect(() => {
-        loadUser(globalUserName)
-    }, []);
+    // useEffect(() => {
+    //     loadUser(globalUserName)
+    // }, []);
 
-    function loadUser(username) {
-        API.getUsername(username)
-            .then(res =>
-                setUsernameId(res.data.id)
-            )
-            .catch(err => console.log(err));
-    };
+    // function loadUser(username) {
+    //     API.getUsername(username)
+    //         .then(res =>
+    //             setUsernameId(res.data.id)
+    //         )
+    //         .catch(err => console.log(err));
+    // };
 
     function createEvent() {
 
@@ -69,7 +71,7 @@ export default function Create() {
             entree_description: entreeDes,
             dessert: dessert,
             dessert_description: dessertDes,
-            UserId: usernameId
+            UserId: globalUserId
         })
             .then(res => console.log(res));
     };
