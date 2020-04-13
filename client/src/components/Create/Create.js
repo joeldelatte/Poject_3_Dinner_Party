@@ -55,7 +55,7 @@ export default function Create() {
     //         .catch(err => console.log(err));
     // };
 
-    function createEvent() {
+    function createEvent(globalUserId) {
 
         API.createEvent({
             event_name: eventName,
@@ -119,7 +119,7 @@ export default function Create() {
                     <div className="form-group col" >
 
                         <button type="submit" className="btn btn-success create-button" disabled={!validateForm()}
-                            onClick={() => createEvent()} >
+                            onClick={() => createEvent(globalUserId)} >
                             <Link className='create-link' to="/dashboard">Create Event</Link>
                         </button>
 
