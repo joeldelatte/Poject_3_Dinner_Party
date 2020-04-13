@@ -18,7 +18,7 @@ export default function DashboardPage() {
 
     useEffect(() => {
         loadEvents(globalUserId)
-    }, [])
+    }, [globalUserId])
 
     function loadEvents(UserId) {
         API.getEvent(UserId)
@@ -29,7 +29,7 @@ export default function DashboardPage() {
 
     useEffect(() => {
         loadRsvpEvents(events.UserId)
-    }, [])
+    }, [events.UserId])
 
     function loadRsvpEvents(UserId) {
         API.getRsvpEvents(UserId)
