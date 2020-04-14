@@ -19,6 +19,12 @@ export default function SignIn() {
 
     function handleSubmit(event) {
       event.preventDefault();
+      console.log(globalUserId);
+    }
+
+    function createGlobalUserData(res) {
+      setGlobalUserId(res.data.id);
+      setGlobalUserName(res.data.username);
     }
 
     function createGlobalUserData(res) {
@@ -29,7 +35,7 @@ export default function SignIn() {
     function loadUser(passWord) {
       API.getUser(passWord)
       .then(res => {
-       createGlobalUserData(res) 
+        createGlobalUserData(res) 
       })
       .catch(err => console.log(err));
     }

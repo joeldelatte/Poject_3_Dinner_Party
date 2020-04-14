@@ -31,7 +31,7 @@ function App() {
             <DashboardPage />
           </Route>
         </UserContext.Provider>
-        </UserIdContext.Provider>  
+        </UserIdContext.Provider>    
           <Landing />
           <FeedPage />
         </Switch>

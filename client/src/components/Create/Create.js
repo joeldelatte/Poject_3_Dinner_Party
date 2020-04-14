@@ -19,9 +19,7 @@ export default function Create() {
     const [entreeDes, setEntreeDes] = useState("");
     const [dessert, setDessert] = useState("");
     const [dessertDes, setDessertDes] = useState("");
-    const [usernameId, setUsernameId] = useState("");
-    // const { globalUserName, setGlobalUserName } = useContext(UserContext);
-    const { globalUserId, setGlobalUserId } = useContext(UserIdContext);
+    const { globalUserId } = useContext(UserIdContext);
 
     function validateForm() {
         return eventName.length > 0
@@ -43,19 +41,7 @@ export default function Create() {
         event.preventDefault();
     };
 
-    // useEffect(() => {
-    //     loadUser(globalUserName)
-    // }, []);
-
-    // function loadUser(username) {
-    //     API.getUsername(username)
-    //         .then(res =>
-    //             setUsernameId(res.data.id)
-    //         )
-    //         .catch(err => console.log(err));
-    // };
-
-    function createEvent() {
+    function createEvent(globalUserId) {
 
         API.createEvent({
             event_name: eventName,
@@ -119,7 +105,7 @@ export default function Create() {
                     <div className="form-group col" >
 
                         <button type="submit" className="btn btn-success create-button" disabled={!validateForm()}
-                            onClick={() => createEvent()} >
+                            onClick={() => createEvent(globalUserId)} >
                             <Link className='create-link' to="/dashboard">Create Event</Link>
                         </button>
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useLayoutEffect } from 'react';
 import { UserContext } from "../../utils/UserContext";
 import { UserIdContext } from "../../utils/UserIdContext";
 import './DashboardPage.css';
@@ -16,13 +16,9 @@ export default function DashboardPage() {
     const { globalUserName } = useContext(UserContext);
     const { globalUserId } = useContext(UserIdContext);
 
-    useEffect(() => {
-        loadUser(globalUserId)
-    }, [])
-
-    function loadUser(globalUserId) {
-                loadEvents(globalUserId)
-    };
+    useLayoutEffect(() => {
+        loadEvents(globalUserId)
+    }, [globalUserId])
 
     function loadEvents(UserId) {
         API.getEvent(UserId)
@@ -33,7 +29,7 @@ export default function DashboardPage() {
 
     useEffect(() => {
         loadRsvpEvents(events.UserId)
-    }, [])
+    }, [events.UserId])
 
     function loadRsvpEvents(UserId) {
         API.getRsvpEvents(UserId)
