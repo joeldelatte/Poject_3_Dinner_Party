@@ -38,7 +38,7 @@ export default function navbar(props) {
         <div>
             <nav className="navbar navbar-expand-lg navbar-fixed-top">
                 <Link className='loggin-user' to='/dashboard'>{props.currentUser}</Link>
-                <div className='page-title nav navbar-nav navbar-center'>{pageTitle}</div>
+                <div className='page-title nav navbar-nav navbar-center'>Testing</div>
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav ml-auto nav-padding">
                         <li className="nav-item dropdown">
