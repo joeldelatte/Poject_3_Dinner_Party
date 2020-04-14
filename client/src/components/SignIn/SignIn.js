@@ -5,7 +5,6 @@ import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
 import {UserIdContext} from "../../utils/UserIdContext";
 
-
 export default function SignIn() {
 // functionality here
 
@@ -21,6 +20,11 @@ export default function SignIn() {
     function handleSubmit(event) {
       event.preventDefault();
       console.log(globalUserId);
+    }
+
+    function createGlobalUserData(res) {
+      setGlobalUserId(res.data.id);
+      setGlobalUserName(res.data.username);
     }
 
     function createGlobalUserData(res) {

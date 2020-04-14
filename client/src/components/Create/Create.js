@@ -19,8 +19,6 @@ export default function Create() {
     const [entreeDes, setEntreeDes] = useState("");
     const [dessert, setDessert] = useState("");
     const [dessertDes, setDessertDes] = useState("");
-    // const [usernameId, setUsernameId] = useState("");
-    // const { globalUserName } = useContext(UserContext);
     const { globalUserId } = useContext(UserIdContext);
 
     function validateForm() {
@@ -42,18 +40,6 @@ export default function Create() {
     function handleSubmit(event) {
         event.preventDefault();
     };
-
-    // useEffect(() => {
-    //     loadUser(globalUserName)
-    // }, []);
-
-    // function loadUser(username) {
-    //     API.getUsername(username)
-    //         .then(res =>
-    //             setUsernameId(res.data.id)
-    //         )
-    //         .catch(err => console.log(err));
-    // };
 
     function createEvent(globalUserId) {
 
