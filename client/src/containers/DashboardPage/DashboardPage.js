@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useLayoutEffect } from 'react';
 import { UserContext } from "../../utils/UserContext";
 import { UserIdContext } from "../../utils/UserIdContext";
 import './DashboardPage.css';
@@ -16,7 +16,7 @@ export default function DashboardPage() {
     const { globalUserName } = useContext(UserContext);
     const { globalUserId } = useContext(UserIdContext);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         loadEvents(globalUserId)
     }, [globalUserId])
 
