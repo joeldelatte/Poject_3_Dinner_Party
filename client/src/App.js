@@ -8,7 +8,6 @@ import './App.css';
 import {UserContext} from "./utils/UserContext";
 import { UserIdContext } from './utils/UserIdContext';
 
-
 function App() {
   const [globalUserName, setGlobalUserName] = useState("");
   const [globalUserId, setGlobalUserId] = useState("")
