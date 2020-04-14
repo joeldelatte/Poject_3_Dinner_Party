@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from "../../utils/UserContext";
+// import { UserContext } from "../../utils/UserContext";
+import { UserIdContext} from "../../utils/UserIdContext";
 import "./Create.css";
 import API from "../../utils/API";
 
@@ -18,8 +19,7 @@ export default function Create() {
     const [entreeDes, setEntreeDes] = useState("");
     const [dessert, setDessert] = useState("");
     const [dessertDes, setDessertDes] = useState("");
-    const [usernameId, setUsernameId] = useState("");
-    const { globalUserName } = useContext(UserContext);
+    const { globalUserId } = useContext(UserIdContext);
 
     function validateForm() {
         return eventName.length > 0
@@ -41,19 +41,7 @@ export default function Create() {
         event.preventDefault();
     };
 
-    useEffect(() => {
-        loadUser(globalUserName)
-    }, []);
-
-    function loadUser(username) {
-        API.getUsername(username)
-            .then(res =>
-                setUsernameId(res.data.id)
-            )
-            .catch(err => console.log(err));
-    };
-
-    function createEvent() {
+    function createEvent(globalUserId) {
 
         API.createEvent({
             event_name: eventName,
@@ -69,7 +57,7 @@ export default function Create() {
             entree_description: entreeDes,
             dessert: dessert,
             dessert_description: dessertDes,
-            UserId: usernameId
+            UserId: globalUserId
         })
             .then(res => console.log(res));
     };
@@ -117,7 +105,7 @@ export default function Create() {
                     <div className="form-group col" >
 
                         <button type="submit" className="btn btn-success create-button" disabled={!validateForm()}
-                            onClick={() => createEvent()} >
+                            onClick={() => createEvent(globalUserId)} >
                             <Link className='create-link' to="/dashboard">Create Event</Link>
                         </button>
 

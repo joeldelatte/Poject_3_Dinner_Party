@@ -1,5 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useLayoutEffect } from 'react';
 import { UserContext } from "../../utils/UserContext";
+import { UserIdContext } from "../../utils/UserIdContext";
 import './DashboardPage.css';
 import YourEvents from '../../components/Dashboard/YourEvents';
 import YourRSVPS from '../../components/Dashboard/YourRSVPS';
@@ -13,21 +14,11 @@ export default function DashboardPage() {
     const [rsvpEvents, setRsvpEvents] = useState([]);
     const [events, setEvents] = useState([]);
     const { globalUserName } = useContext(UserContext);
+    const { globalUserId } = useContext(UserIdContext);
 
-    useEffect(() => {
-        loadUser(globalUserName)
-    }, [])
-
-    function loadUser(username) {
-        API.getUsername(username)
-            .then(res =>
-                loadEvents(res.data.id)
-            )
-            // .then(res =>
-            //     loadRsvpEvents(res.data.id)
-            // )
-
-    };
+    useLayoutEffect(() => {
+        loadEvents(globalUserId)
+    }, [globalUserId])
 
     function loadEvents(UserId) {
         API.getEvent(UserId)
@@ -39,7 +30,7 @@ export default function DashboardPage() {
 //............................................................................................................
     useEffect(() => {
         loadRsvpEvents(events.UserId)
-    }, [])
+    }, [events.UserId])
 
     function loadRsvpEvents(UserId) {
         API.getRsvpEvents(UserId)
