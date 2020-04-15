@@ -1,13 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-export default function navbar(props) {
+export default function Navbar(props) {
+
+    const [pageTitle, setPageTitle] = useState("");
+
+    useEffect(() => {
+        updateTitle()
+    }, [])
+
+    function updateTitle() {
+        switch (window.location.pathname) {
+            case '/events':
+                setPageTitle('Current Events');
+                break;
+            case '/dashboard':
+                setPageTitle('User Dashboard');
+                break;
+            case '/create':
+                setPageTitle('Create Event');
+                break;
+            default:
+                setPageTitle('');
+                break;
+        }
+    }
 
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-fixed-top">
-            <Link className='loggin-user' to='/dashboard'>{props.currentUser}</Link>
+                <Link className='loggin-user' to='/dashboard'>{props.currentUser}</Link>
+                <div className='page-title nav navbar-nav navbar-center'>{pageTitle}</div>
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav ml-auto nav-padding">
                         <li className="nav-item dropdown">
