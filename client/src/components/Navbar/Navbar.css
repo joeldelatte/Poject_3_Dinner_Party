@@ -28,3 +28,12 @@
 .loggin-user:active {
     text-decoration: none;
 }
+
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    /* right: 50%; */
+    transform: translatex(-50%);
+    text-align: center;
+    font-size: 30px;
+}

@@ -27,18 +27,34 @@ module.exports = function (app) {
     //     });
     // });
 
-    app.get("/api/rsvp/events", function (req, res) {
-        db.Events.findAll(
-            {
+    // app.get("/api/rsvp/events", function (req, res) {
+    //     db.Events.findAll(
+    //         {
 
-            // where: sequelize.where(
-            //     db.Events.sequelize.col('UserId'),
-            //     db.Rsvps.sequelize.col('UserId')
-            // ),
-            //   include: [db.Rsvps]
+    //             // where: sequelize.where(
+    //             //     db.Events.sequelize.col('UserId'),
+    //             //     db.Rsvps.sequelize.col('UserId')
+    //             // ),
+    //             //   include: [db.Rsvps]
 
-            }).then(function (dbEvents) {
-            res.json(dbEvents);
-        });
+    //         }).then(function (dbEvents) {
+    //             res.json(dbEvents);
+    //         });
+    // });
+
+    app.get("/api/rsvp/events/:UserId", function (req, res) {
+        db.Events.findAll({
+            where: {
+                UserId: req.params.UserId
+            },
+            include:
+                [{
+                    model: db.Rsvps,
+                    where: { UserId: req.params.UserId }
+                }]
+        })
+            .then(function (dbEvents) {
+                res.json(dbEvents);
+            });
     });
 }
