@@ -23,6 +23,6 @@ export default {
         return http.post("/api/rsvp", rsvpData);
     },
     getRsvpEvents: function (UserId) {
-        return http.get("/api/rsvp/events/" + UserId);
+        return http.get("/api/rsvp/" + UserId);
     }
 };
