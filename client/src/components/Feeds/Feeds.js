@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Feed from './Feed/Feed';
 import API from "../../utils/API";
 import { UserIdContext } from "../../utils/UserIdContext";
@@ -6,7 +6,7 @@ import { UserIdContext } from "../../utils/UserIdContext";
 
 export default function Feeds(props) {
 
-    const { globalUserId } = useContext(UserIdContext);
+    const { globalUserId, setGlobalUserId } = useContext(UserIdContext);
 
     function click(event) {
 
@@ -20,6 +20,17 @@ export default function Feeds(props) {
         console.log(globalUserId);
         console.log(event.id);
     }
+
+    useEffect(()=> {
+        const data = localStorage.getItem("globalUserId");
+        if (data) {
+            setGlobalUserId(JSON.parse(data));
+        }
+    }, []);
+
+    useEffect(()=> {
+        localStorage.setItem("globalUserId", JSON.stringify(globalUserId));
+    });
 
 
     return props.events.map((event) => {

@@ -32,8 +32,8 @@ function App() {
           </Route>
         </UserContext.Provider>
         </UserIdContext.Provider>    
-          <Landing />
-          <FeedPage />
+          {/* <Landing />
+          <FeedPage /> */}
         </Switch>
       </div>
     </Router>

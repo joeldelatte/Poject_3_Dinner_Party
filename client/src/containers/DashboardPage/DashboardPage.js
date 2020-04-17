@@ -31,14 +31,15 @@ export default function DashboardPage() {
 
     //............................................................................................................
     useEffect(() => {
-        loadRsvpEvents(events.UserId)
-    }, [events.UserId])
+        loadRsvpEvents(globalUserId)
+    }, [globalUserId])
 
 
     function loadRsvpEvents(UserId) {
         API.getRsvpEvents(UserId)
             .then(res =>
                 setRsvpEvents(res.data)
+                // console.log(res.data)
             )
     };
     //............................................................................................................
