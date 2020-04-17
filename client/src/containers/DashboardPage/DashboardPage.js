@@ -17,7 +17,7 @@ export default function DashboardPage() {
     const { globalUserName, setGlobalUserName } = useContext(UserContext);
     const { globalUserId, setGlobalUserId } = useContext(UserIdContext);
 
-    useEffect(()=> {
+    useEffect(() => {
         const data1 = localStorage.getItem("globalUserName");
         if (data1) {
             setGlobalUserName(JSON.parse(data1));
@@ -28,7 +28,7 @@ export default function DashboardPage() {
         }
     }, []);
 
-    useEffect(()=> {
+    useEffect(() => {
         localStorage.setItem("globalUserName", JSON.stringify(globalUserName));
         localStorage.setItem("globalUserId", JSON.stringify(globalUserId));
     });
@@ -48,6 +48,7 @@ export default function DashboardPage() {
     //............................................................................................................
     useEffect(() => {
         loadRsvpEvents(globalUserId)
+        console.log(rsvpEvents)
     }, [globalUserId])
 
 
@@ -55,7 +56,6 @@ export default function DashboardPage() {
         API.getRsvpEvents(UserId)
             .then(res =>
                 setRsvpEvents(res.data)
-                // console.log(res.data)
             )
     };
     //............................................................................................................
@@ -75,7 +75,7 @@ export default function DashboardPage() {
                         <Heading>Your RSVPs</Heading>
                         <YourRSVPS
                             className='YourEvents'
-                            events={rsvpEvents} />
+                            rsvps={rsvpEvents} />
                     </div>
                 </div>
             </div>
