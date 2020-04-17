@@ -27,11 +27,6 @@ export default function SignIn() {
       setGlobalUserName(res.data.username);
     }
 
-    function createGlobalUserData(res) {
-      setGlobalUserId(res.data.id);
-      setGlobalUserName(res.data.username);
-    }
-
     function loadUser(passWord) {
       API.getUser(passWord)
       .then(res => {

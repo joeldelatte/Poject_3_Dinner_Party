@@ -14,8 +14,24 @@ export default function DashboardPage() {
 
     const [rsvpEvents, setRsvpEvents] = useState([]);
     const [events, setEvents] = useState([]);
-    const { globalUserName } = useContext(UserContext);
-    const { globalUserId } = useContext(UserIdContext);
+    const { globalUserName, setGlobalUserName } = useContext(UserContext);
+    const { globalUserId, setGlobalUserId } = useContext(UserIdContext);
+
+    useEffect(()=> {
+        const data1 = localStorage.getItem("globalUserName");
+        if (data1) {
+            setGlobalUserName(JSON.parse(data1));
+        }
+        const data2 = localStorage.getItem("globalUserId");
+        if (data2) {
+            setGlobalUserId(JSON.parse(data2));
+        }
+    }, []);
+
+    useEffect(()=> {
+        localStorage.setItem("globalUserName", JSON.stringify(globalUserName));
+        localStorage.setItem("globalUserId", JSON.stringify(globalUserId));
+    });
 
     useLayoutEffect(() => {
         loadEvents(globalUserId)
@@ -31,14 +47,15 @@ export default function DashboardPage() {
 
     //............................................................................................................
     useEffect(() => {
-        loadRsvpEvents(events.UserId)
-    }, [events.UserId])
+        loadRsvpEvents(globalUserId)
+    }, [globalUserId])
 
 
     function loadRsvpEvents(UserId) {
         API.getRsvpEvents(UserId)
             .then(res =>
                 setRsvpEvents(res.data)
+                // console.log(res.data)
             )
     };
     //............................................................................................................
