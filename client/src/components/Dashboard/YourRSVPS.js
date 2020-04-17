@@ -2,17 +2,17 @@ import React from 'react';
 import YourRSVP from './YourRSVP/YourRSVP';
 
 const yourrsvps = (props) => {
-    return props.events.map((event, index) => {
+    return props.rsvps.map((rsvp, index) => {
         return <YourRSVP
             click={() => props.clicked(index)}
-            name={event.event_name}
-            app={event.app}
-            appdes={event.app_description}
-            entree={event.entree}
-            entreedes={event.entree_description}
-            dessert={event.dessert}
-            dessertdes={event.dessert_description}
-            key={event.id}
+            name={rsvp.Event.event_name}
+            app={rsvp.Event.app}
+            appdes={rsvp.Event.app_description}
+            entree={rsvp.Event.entree}
+            entreedes={rsvp.Event.entree_description}
+            dessert={rsvp.Event.dessert}
+            dessertdes={rsvp.Event.dessert_description}
+            key={rsvp.Event.id}
         />
     });
 };
