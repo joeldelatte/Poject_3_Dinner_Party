@@ -9,5 +9,13 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
+    Rsvps.associate = function(models) {
+        Rsvps.belongsTo(models.Events, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
+      };
+
     return Rsvps;
 };

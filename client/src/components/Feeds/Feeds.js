@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Feed from './Feed/Feed';
 import API from "../../utils/API";
+import { UserIdContext } from "../../utils/UserIdContext";
 
 
-export default function feeds(props) {
+export default function Feeds(props) {
+
+    const { globalUserId } = useContext(UserIdContext);
 
     function click(event) {
 
         API.postRsvp({
-            UserId: event.UserId,
+            UserId: globalUserId,
             EventId: event.id,
             // event_seats: eventSeats
         })
             .then(res => console.log(res.data));
 
-        console.log(event.UserId);
+        console.log(globalUserId);
         console.log(event.id);
     }
 

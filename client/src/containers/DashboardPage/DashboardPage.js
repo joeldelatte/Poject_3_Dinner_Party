@@ -11,6 +11,7 @@ import API from "../../utils/API";
 
 
 export default function DashboardPage() {
+
     const [rsvpEvents, setRsvpEvents] = useState([]);
     const [events, setEvents] = useState([]);
     const { globalUserName } = useContext(UserContext);
@@ -25,12 +26,14 @@ export default function DashboardPage() {
             .then(res =>
                 setEvents(res.data)
             )
+
     };
 
-//............................................................................................................
+    //............................................................................................................
     useEffect(() => {
         loadRsvpEvents(events.UserId)
     }, [events.UserId])
+
 
     function loadRsvpEvents(UserId) {
         API.getRsvpEvents(UserId)
@@ -38,7 +41,7 @@ export default function DashboardPage() {
                 setRsvpEvents(res.data)
             )
     };
-//............................................................................................................
+    //............................................................................................................
 
     return (
         <div className='FeedPage'>

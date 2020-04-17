@@ -16,45 +16,51 @@ module.exports = function (app) {
         });
     });
 
-    ///......
-    // app.get("/api/events/:UserId", function (req, res) {
+    // app.get("/api/rsvp/events/:UserId", function (req, res) {
     //     db.Events.findAll({
     //         where: {
     //             UserId: req.params.UserId
     //         },
-    //     }).then(function (dbEvents) {
-    //         res.json(dbEvents);
-    //     });
-    // });
-
-    // app.get("/api/rsvp/events", function (req, res) {
-    //     db.Events.findAll(
-    //         {
-
-    //             // where: sequelize.where(
-    //             //     db.Events.sequelize.col('UserId'),
-    //             //     db.Rsvps.sequelize.col('UserId')
-    //             // ),
-    //             //   include: [db.Rsvps]
-
-    //         }).then(function (dbEvents) {
+    //         include:
+    //             [{
+    //                 model: db.Rsvps,
+    //                 where: { UserId: req.params.UserId }
+    //             }]
+    //     })
+    //         .then(function (dbEvents) {
     //             res.json(dbEvents);
     //         });
     // });
 
-    app.get("/api/rsvp/events/:UserId", function (req, res) {
-        db.Events.findAll({
+    // app.get("/api/rsvp/:UserId", function (req, res) {
+    //     db.Rsvps.findAll({
+    //         where: {
+    //             UserId: req.params.UserId
+    //         },
+    //         include:
+    //         [{
+    //             model: db.Events
+    //         }]
+    //     }).then((rsvps) => rsvps.map(val => db.Events.findAll({
+    //         where: {
+    //             id: val.EventId
+    //         }
+    //     }))).then(function (dbEvents) {
+    //         res.json(dbEvents);
+    //     });
+    // });
+
+    app.get("/api/rsvp/:UserId", function (req, res) {
+        db.Rsvps.findAll({
             where: {
                 UserId: req.params.UserId
             },
             include:
-                [{
-                    model: db.Rsvps,
-                    where: { UserId: req.params.UserId }
-                }]
-        })
-            .then(function (dbEvents) {
-                res.json(dbEvents);
-            });
+            [{
+                model: db.Events
+            }]
+        }).then(function (dbEvents) {
+            res.json(dbEvents);
+        });
     });
 }
