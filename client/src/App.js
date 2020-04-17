@@ -31,7 +31,9 @@ function App() {
           <Route exact path='/dashboard'>
             <DashboardPage />
           </Route>
-          <Route component={NoMatch}/>
+          <Route path="*">
+            <NoMatch />
+          </Route>
         </UserContext.Provider>
         </UserIdContext.Provider>    
         </Switch>
