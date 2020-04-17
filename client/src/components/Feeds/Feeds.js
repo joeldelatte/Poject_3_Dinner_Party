@@ -16,9 +16,6 @@ export default function Feeds(props) {
             // event_seats: eventSeats
         })
             .then(res => console.log(res.data));
-
-        console.log(globalUserId);
-        console.log(event.id);
     }
 
     useEffect(()=> {

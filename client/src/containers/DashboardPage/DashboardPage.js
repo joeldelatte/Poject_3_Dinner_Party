@@ -48,7 +48,6 @@ export default function DashboardPage() {
     //............................................................................................................
     useEffect(() => {
         loadRsvpEvents(globalUserId)
-        console.log(rsvpEvents)
     }, [globalUserId])
 
 
