@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NoMatch from "./components/NoMatch/NoMatch";
 import Landing from "./containers/Landing/Landing";
 import FeedPage from './containers/Feed/FeedPage';
 import CreatePage from './containers/CreatePage/CreatePage';
@@ -30,10 +31,9 @@ function App() {
           <Route exact path='/dashboard'>
             <DashboardPage />
           </Route>
+          <Route component={NoMatch}/>
         </UserContext.Provider>
         </UserIdContext.Provider>    
-          {/* <Landing />
-          <FeedPage /> */}
         </Switch>
       </div>
     </Router>

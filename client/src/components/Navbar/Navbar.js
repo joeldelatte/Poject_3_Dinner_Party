@@ -42,6 +42,7 @@ export default function Navbar(props) {
                                 <Link className="dropdown-item" to="/dashboard">User Dashboard</Link>
                                 <Link className="dropdown-item" to="/events">Current Events</Link>
                                 <Link className="dropdown-item" to="/create">Create an Event</Link>
+                                <Link className="dropdown-item" to="/">Log Out</Link>
                             </div>
                         </li>
                     </ul>
