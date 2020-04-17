@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { UserContext } from "../../utils/UserContext";
 import './CreatePage.css';
 import Create from '../../components/Create/Create';
@@ -8,7 +8,18 @@ import Navbar from '../../components/Navbar/Navbar';
 
 export default function CreatePage() {
 
-    const { globalUserName } = useContext(UserContext);
+    const { globalUserName, setGlobalUserName } = useContext(UserContext);
+
+    useEffect(()=> {
+        const data = localStorage.getItem("globalUserName");
+        if (data) {
+            setGlobalUserName(JSON.parse(data));
+        }
+    }, []);
+
+    useEffect(()=> {
+        localStorage.setItem("globalUserName", JSON.stringify(globalUserName));
+    });
 
     return (
         <div className='CreatePage'>
