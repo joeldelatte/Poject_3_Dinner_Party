@@ -10,6 +10,7 @@ import API from "../../utils/API";
 export default function FeedPage() {
 
     const [events, setEvents] = useState([])
+    const { globalUserName, setGlobalUserName } = useContext(UserContext);
 
     useEffect(() => {
         loadEvents()
@@ -23,7 +24,16 @@ export default function FeedPage() {
             .catch(err => console.log(err));
     };
 
-    const { globalUserName } = useContext(UserContext);
+    useEffect(()=> {
+        const data = localStorage.getItem("globalUserName");
+        if (data) {
+            setGlobalUserName(JSON.parse(data));
+        }
+    }, []);
+
+    useEffect(()=> {
+        localStorage.setItem("globalUserName", JSON.stringify(globalUserName));
+    });
 
     return (
         <div className='FeedPage'>
