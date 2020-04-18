@@ -1,9 +1,9 @@
 import React from "react"
 
-export default function NoMatch() {
+function NoMatch() {
     return (
-        <>
         <h1>*404* Page Not Found</h1>
-        </>
     );
 }
+
+export default NoMatch;
