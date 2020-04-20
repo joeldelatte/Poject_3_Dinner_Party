@@ -45,7 +45,6 @@ export default function DashboardPage() {
 
     };
 
-    //............................................................................................................
     useEffect(() => {
         loadRsvpEvents(globalUserId)
     }, [globalUserId])
@@ -57,7 +56,6 @@ export default function DashboardPage() {
                 setRsvpEvents(res.data)
             )
     };
-    //............................................................................................................
 
     return (
         <div className='FeedPage'>
