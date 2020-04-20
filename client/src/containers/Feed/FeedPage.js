@@ -14,7 +14,7 @@ export default function FeedPage() {
 
     useEffect(() => {
         loadEvents()
-      }, [])
+    }, [])
 
     function loadEvents() {
         API.getEvents()
@@ -24,14 +24,14 @@ export default function FeedPage() {
             .catch(err => console.log(err));
     };
 
-    useEffect(()=> {
+    useEffect(() => {
         const data = localStorage.getItem("globalUserName");
         if (data) {
             setGlobalUserName(JSON.parse(data));
         }
     }, []);
 
-    useEffect(()=> {
+    useEffect(() => {
         localStorage.setItem("globalUserName", JSON.stringify(globalUserName));
     });
 
@@ -40,7 +40,8 @@ export default function FeedPage() {
             <Navbar currentUser={globalUserName} />
             <Feeds
                 className='feeds'
-                events={events} />
+                events={events}
+            />
             <Footer />
         </div>
     )

@@ -3,7 +3,17 @@ import { Link } from 'react-router-dom';
 import './Feed.css';
 import map from './map.png';
 
-const feed = (props) => {
+export default function Feed(props) {
+
+    function handleSubmit(event) {
+        event.preventDefault();
+    };
+
+    function validateForm() {
+        return props.state > 0
+            && props.state < 5
+    }
+
     return (
         <div className='container feed-container'>
             <div className='row'>
@@ -46,18 +56,25 @@ const feed = (props) => {
                     </div>
                     <div className='row button-row'>
                         <div className='col'>
-                            <form>
+                            <form id='seatForm' name='seatForm' onSubmit={handleSubmit}>
                                 <label htmlFor='people'>How many people?</label>
-                                <select className='people' name='people'>
-                                    <option value='1'>1</option>
-                                    <option value='2'>2</option>
-                                    <option value='3'>3</option>
-                                    <option value='4'>4</option>
-                                </select>
+                                <input type='text'
+                                    className='people'
+                                    id='people'
+                                    name='people'
+                                    placeholder='1-4'
+                                    required='number'
+                                    size='4'
+                                    onChange={e => props.parentCallback(e.target.value)}
+                                />
                             </form>
                             <button
+                                disabled={!validateForm()}
+                                form='seatForm'
+                                name='seatForm'
                                 className='rsvp-button'
-                                onClick={() => props.click()}><Link className='rsvp-link' to="/dashboard">RSVP</Link></button>
+                                onClick={() => props.click()}><Link className='rsvp-link' to="/dashboard">RSVP</Link>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -65,5 +82,3 @@ const feed = (props) => {
         </div>
     )
 };
-
-export default feed;
