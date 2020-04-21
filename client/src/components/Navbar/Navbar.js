@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import {UserContext} from "../../utils/UserContext";
+import {UserIdContext} from "../../utils/UserIdContext";
 import './Navbar.css';
 
 export default function Navbar(props) {
@@ -26,6 +28,14 @@ export default function Navbar(props) {
                 break;
         }
     }
+    
+    const {globalUserName, setGlobalUserName} = useContext(UserContext);
+    const {globalUserId, setGlobalUserId} = useContext(UserIdContext);
+
+    function userLogOff() {
+        setGlobalUserName("");
+        setGlobalUserId("");
+    }
 
     return (
         <div>
@@ -42,7 +52,7 @@ export default function Navbar(props) {
                                 <Link className="dropdown-item" to="/dashboard">User Dashboard</Link>
                                 <Link className="dropdown-item" to="/events">Current Events</Link>
                                 <Link className="dropdown-item" to="/create">Create an Event</Link>
-                                <Link className="dropdown-item" to="/">Log Out</Link>
+                                <Link className="dropdown-item" to="/" onClick={ () => userLogOff() }>Log Out</Link>
                             </div>
                         </li>
                     </ul>

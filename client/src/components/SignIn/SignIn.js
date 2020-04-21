@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
@@ -13,9 +13,15 @@ export default function SignIn() {
     const [passWord, setPassWord] = useState("");
 
     // I need to fix this. Possibly will work as before when I import and use useState for username and password again.
-    function validateForm() {
-      return globalUserName.length > 0 && passWord.length > 0;
+    function validateForm(passWord) {
+      return globalUserName.length > 6 && passWord.length > 6; //&& validateUser(passWord) === true)
     }
+
+    // function validateUser(PassWord) {
+    //     if (res.data.password === passWord) {
+    //       return true
+    //     }
+    // }
 
     function handleSubmit(event) {
       event.preventDefault();
@@ -51,7 +57,7 @@ export default function SignIn() {
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  {(validateForm() &&
+                  {(validateForm(passWord) &&
                     <Link  to="/events" role="button" type="submit" className="btn btn-success" onClick={ () => loadUser(passWord) } >Login</Link>) 
                     || <Link role="button" className="btn btn-success">Login</Link>}                    
                 </div>

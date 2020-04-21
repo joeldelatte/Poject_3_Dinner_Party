@@ -14,7 +14,7 @@ const {globalUserId, setGlobalUserId} = useContext(UserIdContext);
 const [passWord, setPassWord] = useState("");
 
     function validateForm() {
-      return globalUserName.length > 0 && passWord.length > 0;
+      return globalUserName.length >= 6 && passWord.length >= 6;
     }
 
     function handleSubmit(event) {
@@ -47,15 +47,15 @@ const [passWord, setPassWord] = useState("");
               <div className="card-header text-center">Create Account</div>
               <form className="card-body text-dark" onSubmit={ handleSubmit } >
                 <div className="form-group">
-                  <label htmlFor="username" className="form-row">Username:</label>
+                  <label htmlFor="username" className="form-row">Username (6 or more characters)</label>
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setGlobalUserName(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="password" className="form-row">Password:</label>
+                  <label htmlFor="password" className="form-row">Password (6 or more characters)</label>
                   <input type="text" className="form-control form-row" placeholder="" />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="password" className="form-row">Confirm Password:</label>
+                  <label htmlFor="password" className="form-row">Confirm Password</label>
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
