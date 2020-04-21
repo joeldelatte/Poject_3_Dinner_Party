@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link  } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import "./style.css";
 import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
@@ -8,6 +8,7 @@ import { UserIdContext } from "../../utils/UserIdContext";
 
 export default function SignUp() {
 // functionality here
+const history = createBrowserHistory();
 const {globalUserName, setGlobalUserName} = useContext(UserContext);
 const {globalUserId, setGlobalUserId} = useContext(UserIdContext);
 
@@ -19,7 +20,7 @@ const [passWord, setPassWord] = useState("");
 
     function handleSubmit(event) {
       event.preventDefault();
-      console.log(globalUserName, passWord);
+      history.replace({pathname: "/events"});
     };
 
     function createGlobalUserData(res) {
@@ -59,9 +60,7 @@ const [passWord, setPassWord] = useState("");
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  {(validateForm() &&
-                    <Link  to="/events" role="button" type="submit" className="btn btn-success" onClick={ () => createUser() } >Sign Up</Link>) 
-                    || <Link role="button" className="btn btn-success">Sign Up</Link>} 
+                  <button type="submit" disabled={!validateForm()} className="btn btn-success" onClick={ () => createUser() } >Login</button>
                 </div>
               </form>
             </div>

@@ -29,8 +29,8 @@ export default function Navbar(props) {
         }
     }
     
-    const {globalUserName, setGlobalUserName} = useContext(UserContext);
-    const {globalUserId, setGlobalUserId} = useContext(UserIdContext);
+    const {setGlobalUserName} = useContext(UserContext);
+    const {setGlobalUserId} = useContext(UserIdContext);
 
     function userLogOff() {
         setGlobalUserName("");

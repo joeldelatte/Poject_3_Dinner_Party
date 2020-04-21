@@ -1,24 +1,24 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import "./style.css";
 import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
 import {UserIdContext} from "../../utils/UserIdContext";
 
 export default function SignIn() {
-// functionality here
-
+// functionality here\
+    const history = createBrowserHistory();
     const {globalUserName, setGlobalUserName} = useContext(UserContext);
     const {globalUserId, setGlobalUserId} = useContext(UserIdContext);
     const [passWord, setPassWord] = useState("");
 
-    function validateForm(l) {
+    function validateForm() {
       return globalUserName.length > 6 && passWord.length > 6; 
     }
 
     function handleSubmit(event) {
       event.preventDefault();
-      console.log(globalUserId);
+      history.replace({pathname: "/events"});
     }
 
     function createGlobalUserData(res) {
@@ -50,9 +50,7 @@ export default function SignIn() {
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  {(validateForm() &&
-                    <Link  to="/events" role="button" type="submit" className="btn btn-success" onClick={ () => loadUser(passWord) } >Login</Link>) 
-                    || <Link role="button" className="btn btn-success">Login</Link>}                    
+                    <button type="submit" disabled={!validateForm()} className="btn btn-success" onClick={ () => loadUser(passWord) } >Login</button>
                 </div>
               </form>
             </div>
