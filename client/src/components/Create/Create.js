@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 // import { UserContext } from "../../utils/UserContext";
-import { UserIdContext} from "../../utils/UserIdContext";
+import { UserIdContext } from "../../utils/UserIdContext";
 import "./Create.css";
 import API from "../../utils/API";
 
@@ -59,7 +59,7 @@ export default function Create() {
             dessert_description: dessertDes,
             UserId: globalUserId
         })
-            .then(res => console.log(res));
+            .then(res => console.log(res))
     };
 
     return (
@@ -103,12 +103,10 @@ export default function Create() {
 
                     </div>
                     <div className="form-group col" >
-
-                        <button type="submit" className="btn btn-success create-button" disabled={!validateForm()}
-                            onClick={() => createEvent(globalUserId)} >
-                            <Link className='create-link' to="/dashboard">Create Event</Link>
-                        </button>
-
+                        {validateForm() ? <Link className='create-link' to="/dashboard">
+                            <button type="submit" className="btn btn-success create-button" onClick={() => createEvent(globalUserId)} >Create Event</button>
+                        </Link>
+                            : <button className="btn btn-success create-button" disabled={!validateForm()} >Create Event</button>}
                     </div>
                 </div>
 

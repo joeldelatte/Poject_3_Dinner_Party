@@ -62,19 +62,30 @@ export default function Feed(props) {
                                     className='people'
                                     id='people'
                                     name='people'
-                                    placeholder='1-4'
+                                    placeholder='1 - 4'
                                     required='number'
                                     size='4'
                                     onChange={e => props.parentCallback(e.target.value)}
                                 />
                             </form>
-                            <button
-                                disabled={!validateForm()}
-                                form='seatForm'
-                                name='seatForm'
-                                className='rsvp-button'
-                                onClick={() => props.click()}><Link className='rsvp-link' to="/dashboard">RSVP</Link>
-                            </button>
+                            <div>
+                                {
+                                    validateForm() ? <Link className='rsvp-link' to="/dashboard">
+                                        <button
+                                            form='seatForm'
+                                            name='seatForm'
+                                            className='rsvp-button btn btn-success'
+                                            onClick={() => props.click()}>RSVP
+                                    </button>
+                                    </Link>
+                                        : <button
+                                            disabled={!validateForm()}
+                                            form='seatForm'
+                                            name='seatForm'
+                                            className='rsvp-button btn btn-success'>RSVP
+                                    </button>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

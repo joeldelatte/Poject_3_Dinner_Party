@@ -34,27 +34,32 @@ export default function DashboardPage() {
     });
 
     useLayoutEffect(() => {
-        loadEvents(globalUserId)
-    }, [globalUserId])
+        setTimeout(() => {
+            loadEvents(globalUserId)
+        }, 100);
+        // return () => clearTimeout(timer);
+    }, [globalUserId]);
 
     function loadEvents(UserId) {
         API.getEvent(UserId)
             .then(res =>
                 setEvents(res.data)
-            )
+            );
 
     };
 
     useEffect(() => {
-        loadRsvpEvents(globalUserId)
-    }, [globalUserId])
-
+        setTimeout(() => {
+            loadRsvpEvents(globalUserId)
+        }, 100);
+        // return () => clearTimeout(timer);
+    }, [globalUserId]);
 
     function loadRsvpEvents(UserId) {
         API.getRsvpEvents(UserId)
             .then(res =>
                 setRsvpEvents(res.data)
-            )
+            );
     };
 
     return (
