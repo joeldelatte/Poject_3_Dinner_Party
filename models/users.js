@@ -27,7 +27,7 @@ module.exports = function (sequelize, DataTypes) {
 
         Users.hasMany(models.Rsvps, {
             foreignKey: {
-                unique: true,
+                // unique: true,
                 allowNull: false
             }
         });
