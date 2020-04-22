@@ -1,16 +1,17 @@
 import React, { useState, useContext } from "react";
-import { createBrowserHistory } from "history";
+// import { createBrowserHistory } from "history";
+import { BrowserRouter as Switch, Redirect, Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
 import {UserIdContext} from "../../utils/UserIdContext";
 
 export default function SignIn() {
-// functionality here\
-    const history = createBrowserHistory();
+// functionality here
     const {globalUserName, setGlobalUserName} = useContext(UserContext);
     const {globalUserId, setGlobalUserId} = useContext(UserIdContext);
     const [passWord, setPassWord] = useState("");
+    const [next, setNext] = useState(false)
 
     function validateForm() {
       return globalUserName.length > 6 && passWord.length > 6; 
@@ -18,12 +19,12 @@ export default function SignIn() {
 
     function handleSubmit(event) {
       event.preventDefault();
-      history.replace({pathname: "/events"});
     }
 
     function createGlobalUserData(res) {
       setGlobalUserId(res.data.id);
       setGlobalUserName(res.data.username);
+      setNext(true);
     }
 
     function loadUser(passWord) {
@@ -50,13 +51,15 @@ export default function SignIn() {
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                    <button type="submit" disabled={!validateForm()} className="btn btn-success" onClick={ () => loadUser(passWord) } >Login</button>
+                  <button type="submit" disabled={!validateForm()} className="btn btn-sm btn-primary" onClick={ () => loadUser(passWord) } >Login</button>
+                  {(next && <Link  to="/events" role="button" type="submit" className="btn btn-success"  >Enter Dinner Party</Link>)}
                 </div>
               </form>
             </div>
           </div>
           <div className="col-md-4"></div>
         </div>
+        
     )
 
 }
