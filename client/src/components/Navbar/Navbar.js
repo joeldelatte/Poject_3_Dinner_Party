@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
-// import {UserContext} from "../../utils/UserContext";
-// import {UserIdContext} from "../../utils/UserIdContext";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Link} from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar(props) {
@@ -28,9 +26,6 @@ export default function Navbar(props) {
                 break;
         }
     }
-    
-    // const {setGlobalUserName} = useContext(UserContext);
-    // const {setGlobalUserId} = useContext(UserIdContext);
 
     function userLogOff() {
         localStorage.removeItem("globalUserName");
