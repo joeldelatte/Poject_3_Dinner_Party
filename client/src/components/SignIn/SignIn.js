@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 // import { createBrowserHistory } from "history";
-import { BrowserRouter as Router, Route, Switch, Redirect, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
@@ -51,7 +51,7 @@ export default function SignIn() {
                 </div>
                 <div className="form-group">
                   <label htmlFor="password" className="form-row">Password:</label>
-                  <input type="password" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
+                  <input type="password" autoComplete="current-password" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
                   {(!next && <button type="submit" disabled={!validateForm()} className="btn btn-sm btn-primary" onClick={ () => loadUser(passWord) } >Login</button>)}

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useEffect} from "react";
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import Footer from "../../components/Footer/Footer"
 import SignIn from "../../components/SignIn/SignIn";
@@ -17,6 +17,11 @@ const styles = {
 }
 
 export default function Landing() {
+
+  useEffect(()=>{
+    localStorage.removeItem("globalUserName");
+    localStorage.removeItem("globalUserId");
+  },[]);
 
   const [signUp, setSignUp] = useState(false);
   
