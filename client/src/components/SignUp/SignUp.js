@@ -60,7 +60,7 @@ const [passWord, setPassWord] = useState("");
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  <button type="submit" disabled={!validateForm()} className="btn btn-success" onClick={ () => createUser() } >Login</button>
+                  <button type="submit" disabled={!validateForm()} className="btn btn-primary" onClick={ () => createUser() } >Sign Up</button>
                 </div>
               </form>
             </div>

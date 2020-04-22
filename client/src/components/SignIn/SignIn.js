@@ -14,7 +14,10 @@ export default function SignIn() {
     const [next, setNext] = useState(false)
 
     function validateForm() {
-      return globalUserName.length > 6 && passWord.length > 6; 
+      if (globalUserName.length > 6 &&
+          passWord.length > 6 &&
+          next === false)
+          {return true};
     }
 
     function handleSubmit(event) {
@@ -32,7 +35,7 @@ export default function SignIn() {
       .then(res => {
         createGlobalUserData(res) 
       })
-      .catch(err => console.log(err));
+      .catch(() => alert("Username or Password is incorrect, please try again."));
     }
 
     return (
@@ -51,7 +54,7 @@ export default function SignIn() {
                   <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  <button type="submit" disabled={!validateForm()} className="btn btn-sm btn-primary" onClick={ () => loadUser(passWord) } >Login</button>
+                  {(!next && <button type="submit" disabled={!validateForm()} className="btn btn-sm btn-primary" onClick={ () => loadUser(passWord) } >Login</button>)}
                   {(next && <Link  to="/events" role="button" type="submit" className="btn btn-success"  >Enter Dinner Party</Link>)}
                 </div>
               </form>
