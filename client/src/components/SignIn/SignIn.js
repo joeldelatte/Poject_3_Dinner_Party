@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
-import { Link  } from "react-router-dom";
+// import { createBrowserHistory } from "history";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
@@ -7,24 +8,26 @@ import {UserIdContext} from "../../utils/UserIdContext";
 
 export default function SignIn() {
 // functionality here
-
     const {globalUserName, setGlobalUserName} = useContext(UserContext);
     const {globalUserId, setGlobalUserId} = useContext(UserIdContext);
     const [passWord, setPassWord] = useState("");
+    const [next, setNext] = useState(false)
 
-    // I need to fix this. Possibly will work as before when I import and use useState for username and password again.
     function validateForm() {
-      return globalUserName.length > 0 && passWord.length > 0;
+      if (globalUserName.length > 6 &&
+          passWord.length > 6 &&
+          next === false)
+          {return true};
     }
 
     function handleSubmit(event) {
       event.preventDefault();
-      console.log(globalUserId);
     }
 
     function createGlobalUserData(res) {
       setGlobalUserId(res.data.id);
       setGlobalUserName(res.data.username);
+      setNext(true);
     }
 
     function loadUser(passWord) {
@@ -32,7 +35,7 @@ export default function SignIn() {
       .then(res => {
         createGlobalUserData(res) 
       })
-      .catch(err => console.log(err));
+      .catch(() => alert("Username or Password is incorrect, please try again."));
     }
 
     return (
@@ -48,18 +51,18 @@ export default function SignIn() {
                 </div>
                 <div className="form-group">
                   <label htmlFor="password" className="form-row">Password:</label>
-                  <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
+                  <input type="password" autoComplete="current-password" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  {(validateForm() &&
-                    <Link  to="/events" role="button" type="submit" className="btn btn-success" onClick={ () => loadUser(passWord) } >Login</Link>) 
-                    || <Link role="button" className="btn btn-success">Login</Link>}                    
+                  {(!next && <button type="submit" disabled={!validateForm()} className="btn btn-sm btn-primary" onClick={ () => loadUser(passWord) } >Login</button>)}
+                  {(next && <Link  to="/events" role="button" type="submit" className="btn btn-success"  >Enter Dinner Party</Link>)}
                 </div>
               </form>
             </div>
           </div>
           <div className="col-md-4"></div>
         </div>
+        
     )
 
 }

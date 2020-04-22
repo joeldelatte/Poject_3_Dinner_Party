@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Link} from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar(props) {
@@ -27,6 +27,11 @@ export default function Navbar(props) {
         }
     }
 
+    function userLogOff() {
+        localStorage.removeItem("globalUserName");
+        localStorage.removeItem("globalUserId");
+    }
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-fixed-top">
@@ -42,7 +47,7 @@ export default function Navbar(props) {
                                 <Link className="dropdown-item" to="/dashboard">User Dashboard</Link>
                                 <Link className="dropdown-item" to="/events">Current Events</Link>
                                 <Link className="dropdown-item" to="/create">Create an Event</Link>
-                                <Link className="dropdown-item" to="/">Log Out</Link>
+                                <Link className="dropdown-item" to="/" onClick={ () => userLogOff() }>Log Out</Link>
                             </div>
                         </li>
                     </ul>
