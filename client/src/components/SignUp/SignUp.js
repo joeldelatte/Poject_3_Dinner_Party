@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { createBrowserHistory } from "history";
+import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
 import {UserContext} from "../../utils/UserContext";
@@ -8,24 +8,27 @@ import { UserIdContext } from "../../utils/UserIdContext";
 
 export default function SignUp() {
 // functionality here
-const history = createBrowserHistory();
-const {globalUserName, setGlobalUserName} = useContext(UserContext);
-const {globalUserId, setGlobalUserId} = useContext(UserIdContext);
+  const {globalUserName, setGlobalUserName} = useContext(UserContext);
+  const {globalUserId, setGlobalUserId} = useContext(UserIdContext);
 
-const [passWord, setPassWord] = useState("");
+  const [passWord, setPassWord] = useState("");
+  const [next, setNext] = useState(false)
 
     function validateForm() {
-      return globalUserName.length >= 6 && passWord.length >= 6;
-    }
+      if (globalUserName.length > 6 &&
+          passWord.length > 6 &&
+          next === false)
+          {return true};
+    } 
 
     function handleSubmit(event) {
       event.preventDefault();
-      history.replace({pathname: "/events"});
     };
 
     function createGlobalUserData(res) {
       setGlobalUserId(res.data.id);
       setGlobalUserName(res.data.username);
+      setNext(true)
     }
 
     function createUser() {
@@ -53,14 +56,15 @@ const [passWord, setPassWord] = useState("");
                 </div>
                 <div className="form-group">
                   <label htmlFor="password" className="form-row">Password (6 or more characters)</label>
-                  <input type="text" className="form-control form-row" placeholder="" />
+                  <input type="password" autoComplete="new-password" className="form-control form-row" placeholder="" />
                 </div>
                 <div className="form-group">
                   <label htmlFor="password" className="form-row">Confirm Password</label>
-                  <input type="text" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
+                  <input type="password" className="form-control form-row" placeholder="" onChange={e => setPassWord(e.target.value)}/>
                 </div>
                 <div className="form-row justify-content-center" >
-                  <button type="submit" disabled={!validateForm()} className="btn btn-primary" onClick={ () => createUser() } >Sign Up</button>
+                  {(!next && <button type="submit" disabled={!validateForm()} className="btn btn-primary" onClick={ () => createUser() } >Sign Up</button>)}
+                  {(next && <Link  to="/events" role="button" type="submit" className="btn btn-success"  >Enter Dinner Party</Link>)} 
                 </div>
               </form>
             </div>

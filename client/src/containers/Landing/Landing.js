@@ -3,8 +3,6 @@ import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import Footer from "../../components/Footer/Footer"
 import SignIn from "../../components/SignIn/SignIn";
 import SignUp from "../../components/SignUp/SignUp";
-// import {UserContext} from "../../utils/UserContext";
-
 
 const styles = {
   keepIt: {
@@ -20,7 +18,6 @@ const styles = {
 
 export default function Landing() {
 
-  // const {globalUserName, setGlobalUserName} = useContext(UserContext);
   const [signUp, setSignUp] = useState(false);
   
     return (

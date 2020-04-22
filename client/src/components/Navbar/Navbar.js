@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {UserContext} from "../../utils/UserContext";
-import {UserIdContext} from "../../utils/UserIdContext";
+// import {UserContext} from "../../utils/UserContext";
+// import {UserIdContext} from "../../utils/UserIdContext";
 import './Navbar.css';
 
 export default function Navbar(props) {
@@ -29,12 +29,12 @@ export default function Navbar(props) {
         }
     }
     
-    const {setGlobalUserName} = useContext(UserContext);
-    const {setGlobalUserId} = useContext(UserIdContext);
+    // const {setGlobalUserName} = useContext(UserContext);
+    // const {setGlobalUserId} = useContext(UserIdContext);
 
     function userLogOff() {
-        setGlobalUserName("");
-        setGlobalUserId("");
+        localStorage.removeItem("globalUserName");
+        localStorage.removeItem("globalUserId");
     }
 
     return (
