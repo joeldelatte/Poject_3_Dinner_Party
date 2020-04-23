@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import {useHistory} from "react-router-dom";
 import { UserContext } from "../../utils/UserContext";
 import './FeedPage.css';
 import Feeds from '../../components/Feeds/Feeds';
@@ -9,11 +10,13 @@ import API from "../../utils/API";
 
 export default function FeedPage() {
 
+    // const history = useHistory();
     const [events, setEvents] = useState([])
     const { globalUserName, setGlobalUserName } = useContext(UserContext);
 
     useEffect(() => {
         loadEvents()
+        // history.block('Are you sure you want to leave this page?');
     }, [])
 
     function loadEvents() {
