@@ -44,8 +44,7 @@ export default function DashboardPage() {
         API.getEvent(UserId)
             .then(res =>
                 setEvents(res.data)
-            );
-
+            ).catch(err=>console.log(err));
     };
 
     useEffect(() => {
@@ -59,7 +58,7 @@ export default function DashboardPage() {
         API.getRsvpEvents(UserId)
             .then(res =>
                 setRsvpEvents(res.data)
-            );
+            ).catch(err=>console.log(err));
     };
 
     return (
