@@ -31,7 +31,7 @@ export default function DashboardPage() {
     useEffect(() => {
         localStorage.setItem("globalUserName", JSON.stringify(globalUserName));
         localStorage.setItem("globalUserId", JSON.stringify(globalUserId));
-    });
+    },[]);
 
     useLayoutEffect(() => {
         setTimeout(() => {

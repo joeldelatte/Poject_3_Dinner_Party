@@ -21,25 +21,9 @@ export default function Landing() {
 
   const history = useHistory();
   function handleBackButton() {
-    // if (window.popstate) {
-    //   window.history.forward();
-    // }
-    window.addEventListener('popstate', function(event) {
-      // The popstate event is fired each time when the current history entry changes.
-  
-      var r = alert("You pressed a Back button! Are you sure?!");
-  
-      if (r == true) {
-          history.back();
-          // window.location = document.referrer // Note: IE11 is not supporting this.
-      } else {
-          // Stay on the current page.
-          history.push(window.location.pathname);
-      }
-  
-      history.push(window.location.pathname);
-  
-  }, false);
+    window.onpopstate = () => {
+      history.go(1);
+    }
   }
 
   useEffect(()=>{
