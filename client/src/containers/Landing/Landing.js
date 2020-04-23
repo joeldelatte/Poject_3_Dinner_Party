@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect } from "react";
+// import {BrowserRouter as useHistory} from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import Footer from "../../components/Footer/Footer"
 import SignIn from "../../components/SignIn/SignIn";
@@ -18,9 +19,17 @@ const styles = {
 
 export default function Landing() {
 
+  // const history = useHistory();
+  function handleBackButton() {
+    if (window.popstate) {
+      window.history.forward();
+    }
+  }
+
   useEffect(()=>{
     localStorage.removeItem("globalUserName");
     localStorage.removeItem("globalUserId");
+    handleBackButton();
   },[]);
 
   const [signUp, setSignUp] = useState(false);
