@@ -8,12 +8,25 @@ import SignUp from "../../components/SignUp/SignUp";
 const styles = {
   keepIt: {
     maxWidth: '100%',
+    maxHeight: '100%',
     paddingLeft: 0,
     paddingRight: 0,
   },
   buttonSpacer: {
     marginTop: 20,
     marginBottom: 20
+  },
+  footer: {
+    left: 0,
+    bottom: 0,
+    width: '100%',
+    marginTop: 100,
+    textAlign: 'center',
+    backgroundColor: 'rgb(231, 234, 240)',
+    color: 'black',
+    padding: 20,
+    fontSize: 30,
+    position: 'relative'
   }
 }
 
@@ -43,7 +56,11 @@ export default function Landing() {
             <button className="btn btn-outline-secondary btn-sm" style={styles.buttonSpacer} onClick={e => setSignUp(false)}>Sign into your new account here.</button>
           </div>}
           {(signUp && <SignUp />) || <SignIn />}
-          <Footer />
+          <div>
+            <div style={styles.footer}>
+                <p>Dinner Party</p>
+            </div>
+          </div>
         </div>
     )
 }
