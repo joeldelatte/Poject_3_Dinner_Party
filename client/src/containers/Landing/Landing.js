@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from "react";
-// import {BrowserRouter as useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import Footer from "../../components/Footer/Footer"
 import SignIn from "../../components/SignIn/SignIn";
@@ -19,11 +19,29 @@ const styles = {
 
 export default function Landing() {
 
-  // const history = useHistory();
+  const history = useHistory();
   function handleBackButton() {
-    if (window.popstate) {
-      window.history.forward();
-    }
+    // if (window.popstate) {
+    //   window.history.forward();
+    // }
+    window.addEventListener('popstate', function(event) {
+      // The popstate event is fired each time when the current history entry changes.
+  
+      var r = alert("You pressed a Back button! Are you sure?!");
+  
+      if (r == true) {
+          // Call Back button programmatically as per user confirmation.
+          history.back();
+          // Uncomment below line to redirect to the previous page instead.
+          // window.location = document.referrer // Note: IE11 is not supporting this.
+      } else {
+          // Stay on the current page.
+          history.push(window.location.pathname);
+      }
+  
+      history.push(window.location.pathname);
+  
+  }, false);
   }
 
   useEffect(()=>{
