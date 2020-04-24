@@ -1,4 +1,4 @@
-# Dinner_Party https://rocky-meadow-16617.herokuapp.com/
+# <a href="https://rocky-meadow-16617.herokuapp.com/">Dinner_Party </a>
 Group Project 3
 
 This application is used as a location for chefs, home cooks, or just people that like try new food.  They can create an account and then post events, as they will show up in the events feed.  Or, they can log in and search through all of the events to find one that they would like to try.  It is a great way for people to get together and connect over food.
