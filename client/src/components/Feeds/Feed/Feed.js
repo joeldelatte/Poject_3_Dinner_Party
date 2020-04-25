@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Feed.css';
-import map from './map.png';
+// import map from './map.png';
+import Map from './Map';
 
 export default function Feed(props) {
 
@@ -51,7 +52,8 @@ export default function Feed(props) {
                 <div className='col-4'>
                     <div className='row'>
                         <div className='col'>
-                            <img className='map' src={map} alt='thumbnail of event location' />
+                            {/* <img className='map' src={map} alt='thumbnail of event location' /> */}
+                            <Map />
                         </div>
                     </div>
                     <div className='row button-row'>
