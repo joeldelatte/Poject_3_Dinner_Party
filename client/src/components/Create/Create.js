@@ -70,7 +70,7 @@ export default function Create() {
                         <input type="text" className="form-control form-row input-box" placeholder="Event Name" onChange={e => setEventName(e.target.value)} />
                     </div>
                     <div className="form-group col">
-                        <input type="text" className="form-control form-row input-box" placeholder="Event Date (ex: 2020-3-19)" onChange={e => setEventDate(e.target.value)} />
+                        <input type="date" className="form-control form-row input-box" placeholder="Event Date (ex: 3-19-2020)" onChange={e => setEventDate(e.target.value)} />
                     </div>
                     <div className="form-group col">
                         <input type="text" className="form-control form-row input-box" placeholder="Maximum Seats" onChange={e => setEventSeats(e.target.value)} />

@@ -10,6 +10,12 @@ module.exports = function (sequelize, DataTypes) {
         },
         event_date: {
             type: DataTypes.DATEONLY,
+            get: function() {
+                return moment(this.getDataValue('event_date')).format('MM.DD.YYYY')
+             },
+            // set: function() {
+            //     setDataValue('event_date', moment().format('MM.DD.YYYY'))
+            // },
             allowNull: false,
         },
         event_seats: {
