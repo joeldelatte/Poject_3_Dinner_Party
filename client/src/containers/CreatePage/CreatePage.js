@@ -5,6 +5,20 @@ import Create from '../../components/Create/Create';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 
+const styles = {
+    footer: {
+      left: 0,
+      bottom: 0,
+      width: '100%',
+      marginTop: 100,
+      textAlign: 'center',
+      backgroundColor: 'rgb(231, 234, 240)',
+      color: 'black',
+      padding: 20,
+      fontSize: 30,
+      position: 'relative'
+    }
+  }
 
 export default function CreatePage() {
 
@@ -25,7 +39,9 @@ export default function CreatePage() {
         <div className='CreatePage'>
             <Navbar currentUser={globalUserName} />
             <Create />
-            <Footer />
+            <div style={styles.footer}>
+                <p>Dinner Party</p>
+            </div>
         </div>
     );
 }
