@@ -16,7 +16,6 @@ export default function FeedPage() {
 
     useEffect(() => {
         loadEvents()
-        // history.block('Are you sure you want to leave this page?');
     }, [])
 
     function loadEvents() {

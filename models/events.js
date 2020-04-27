@@ -1,3 +1,4 @@
+const moment = require('moment');
 module.exports = function (sequelize, DataTypes) {
     var Events = sequelize.define("Events", {
         event_name: {
@@ -10,6 +11,12 @@ module.exports = function (sequelize, DataTypes) {
         },
         event_date: {
             type: DataTypes.DATEONLY,
+            get() {
+                return moment(this.getDataValue('event_date')).format('MMMM, Do, YYYY')
+             },
+            // set: function() {
+            //     return setDataValue('event_date', moment().format('MM.DD.YYYY'))
+            // },
             allowNull: false,
         },
         event_seats: {

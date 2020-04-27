@@ -5,7 +5,6 @@ import Create from '../../components/Create/Create';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 
-
 export default function CreatePage() {
 
     const { globalUserName, setGlobalUserName } = useContext(UserContext);

@@ -6,6 +6,7 @@ const yourrsvps = (props) => {
         return <YourRSVP
             click={() => props.clicked(index)}
             name={rsvp.Event.event_name}
+            date={rsvp.Event.event_date}
             app={rsvp.Event.app}
             appdes={rsvp.Event.app_description}
             entree={rsvp.Event.entree}
