@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import { UserIdContext } from "../../utils/UserIdContext";
 
 
+
 export default function Feeds(props) {
 
     const { globalUserId, setGlobalUserId } = useContext(UserIdContext);
@@ -35,18 +36,26 @@ export default function Feeds(props) {
     });
 
     return props.events.map((event) => {
-        return <Feed
-            click={() => click(event)}
-            parentCallback={callbackFunction}
-            state={seats}
-            name={event.event_name}
-            app={event.app}
-            appdes={event.app_description}
-            entree={event.entree}
-            entreedes={event.entree_description}
-            dessert={event.dessert}
-            dessertdes={event.dessert_description}
-            key={event.id}
-        />
+        return (
+            <div>
+                <Feed
+                    click={() => click(event)}
+                    parentCallback={callbackFunction}
+                    state={seats}
+                    name={event.event_name}
+                    address={event.event_address}
+                    city={event.event_city}
+                    eventState={event.event_state}
+                    zip={event.event_zip}
+                    app={event.app}
+                    appdes={event.app_description}
+                    entree={event.entree}
+                    entreedes={event.entree_description}
+                    dessert={event.dessert}
+                    dessertdes={event.dessert_description}
+                    key={event.id}
+                />
+
+            </div>)
     });
 };
