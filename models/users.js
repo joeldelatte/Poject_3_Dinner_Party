@@ -1,3 +1,4 @@
+// const stringHash = require("string-hash");
 module.exports = function (sequelize, DataTypes) {
     var Users = sequelize.define("Users", {
         username: {
@@ -10,6 +11,9 @@ module.exports = function (sequelize, DataTypes) {
         },
         password: {
             type: DataTypes.STRING,
+            // set(value) {
+            //     this.setDataValue('password', stringHash(value));
+            //   },
             allowNull: false,
             unique: true,
             validate: {

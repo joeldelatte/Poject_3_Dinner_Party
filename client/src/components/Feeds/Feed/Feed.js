@@ -21,6 +21,7 @@ export default function Feed(props) {
                     <div className='row'>
                         <div className='col bold event-title'>
                             <p>{props.name}</p>
+                            <p>{props.date}</p>
                         </div>
                     </div>
                     <div className='row menu-row'>

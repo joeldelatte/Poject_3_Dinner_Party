@@ -40,6 +40,7 @@ export default function Feeds(props) {
             parentCallback={callbackFunction}
             state={seats}
             name={event.event_name}
+            date={event.event_date}
             app={event.app}
             appdes={event.app_description}
             entree={event.entree}
