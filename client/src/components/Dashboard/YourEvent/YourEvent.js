@@ -7,6 +7,7 @@ const yourevent = (props) => {
             <div className='row bold event-title'>
                 <div className='col'>
                     <p>{props.name}</p>
+                    <p>{props.date}</p>
                 </div>
             </div>
             <div className='row menu-row'>
