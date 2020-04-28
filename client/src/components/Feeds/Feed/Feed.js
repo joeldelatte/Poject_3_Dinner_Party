@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { GoogleMap, withScriptjs, withGoogleMap, Marker } from 'react-google-maps';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import './Feed.css';
 // import map from './map.png';
+import Map from '../Map/Map';
 
 export default function Feed(props) {
 
     const geoKey = 'AIzaSyCda_xJK2EMHj9YiBu-IA_-bWiKZUlkhKI';
     const geoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
-    const mapKey = 'AIzaSyAa07poXHneFveXwdglrdC6Ahg6U2JnwUs';
 
     let [latt, setLatt] = useState("");
     let [long, setLong] = useState("");
@@ -32,29 +31,15 @@ export default function Feed(props) {
                 key: geoKey
             }
         })
-            // .then(response => response.json())
             .then(response => {
                 setLatt(response.data.results[0].geometry.location.lat)
                 setLong(response.data.results[0].geometry.location.lng)
                 console.log(response.data.results[0].geometry.location.lat);
                 console.log(response.data.results[0].geometry.location.lng);
             })
-            // .then(() => Map(latt, long));
     }
 
-
-    function Map() {
-        return (
-            <GoogleMap
-                defaultZoom={10}
-                defaultCenter={{ lat: 37.0902, lng: 95.7129 }}
-            />
-        );
-    }
-
-    const WrappedMap = withScriptjs(withGoogleMap(Map));
-
-    //.......................................................................
+    //...........................................................................
     function handleSubmit(event) {
         event.preventDefault();
     };
@@ -104,11 +89,9 @@ export default function Feed(props) {
                         <div className='col'>
                             {/* <img className='map' src={map} alt='thumbnail of event location' /> */}
                             <div className='map'>
-                                <WrappedMap
-                                    googleMapUrl={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`}
-                                    loadingElement={<div style={{ height: '100%' }} />}
-                                    containerElement={<div style={{ height: '100%' }} />}
-                                    mapElement={<div style={{ height: '100%' }} />}
+                                <Map
+                                    lattitude={latt}
+                                    longitude={long}
                                 />
                             </div>
                         </div>
@@ -151,14 +134,5 @@ export default function Feed(props) {
             </div>
         </div>
     )
-
-    function loadScript(url) {
-        let index = window.document.getElementsByTagName('script')[0]
-        let script = window.document.createElement('script')
-        script.src = url
-        script.async = true
-        script.defer = true
-        index.parentNode.insertBefore(script, index)
-    }
 
 };
