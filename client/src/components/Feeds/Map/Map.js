@@ -4,7 +4,7 @@ import './Map.css';
 
 export default function Map(props) {
 
-    const mapKey = 'AIzaSyAa07poXHneFveXwdglrdC6Ahg6U2JnwUs';
+    const mapKey = 'put your google map key here';
     const mapUrl = 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=';
 
     // let [map, setMap] = useState("");
