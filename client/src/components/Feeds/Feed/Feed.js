@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Feed.css';
 // import map from './map.png';
 import Map from '../Map/Map';
+// import { GoogleMap, withScriptjs, withGoogleMap, Marker } from 'react-google-maps';
 
 export default function Feed(props) {
 

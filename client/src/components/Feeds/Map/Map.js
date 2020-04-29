@@ -13,8 +13,10 @@ export default function Map(props) {
         return (
             <GoogleMap
                 defaultZoom={10}
-                defaultCenter={{ lat: 45.421532, lng: -75.697189 }}
-            />
+                defaultCenter={{ lat: props.latitude, lng: props.longitude }}
+            >
+                <Marker key={props.key} position={{ lat: props.latitude, lng: props.longitude }} />
+            </GoogleMap>
         );
     }
 

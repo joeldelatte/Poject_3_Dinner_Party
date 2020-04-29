@@ -55,7 +55,6 @@ export default function Feeds(props) {
                     dessertdes={event.dessert_description}
                     key={event.id}
                 />
-
             </div>)
     });
 };
