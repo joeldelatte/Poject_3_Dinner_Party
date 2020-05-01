@@ -4,41 +4,40 @@ import { Link } from 'react-router-dom';
 import './Feed.css';
 // import map from './map.png';
 import Map from '../Map/Map';
-// import { GoogleMap, withScriptjs, withGoogleMap, Marker } from 'react-google-maps';
 
 export default function Feed(props) {
 
-    const geoKey = 'AIzaSyCda_xJK2EMHj9YiBu-IA_-bWiKZUlkhKI';
-    const geoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
+    // const geoKey = `AIzaSyCfDTXwXZhRecxI38q0SDC87l3pYs-YLRo`;
+    // const geoUrl = `https://maps.googleapis.com/maps/api/geocode/json?`;
 
-    let [latt, setLatt] = useState("");
-    let [long, setLong] = useState("");
+    // const [latt, setLatt] = useState("");
+    // const [long, setLong] = useState("");
 
-    useEffect(() => {
-        geocode();
-    }, []);
+    // useEffect(() => {
+    //     geocode();
+    // }, []);
 
-    function geocode() {
+    // function geocode() {
 
-        let address = props.address;
-        let city = props.city;
-        let state = props.eventState;
-        // let zip = props.zip;
-        let location = address + " " + city + " " + state;
+    //     let address = props.address;
+    //     let city = props.city;
+    //     let state = props.eventState;
+    //     // let zip = props.zip;
+    //     let location = address + " " + city + " " + state;
 
-        axios.get(geoUrl, {
-            params: {
-                address: location,
-                key: geoKey
-            }
-        })
-            .then(response => {
-                setLatt(response.data.results[0].geometry.location.lat)
-                setLong(response.data.results[0].geometry.location.lng)
-                console.log(response.data.results[0].geometry.location.lat);
-                console.log(response.data.results[0].geometry.location.lng);
-            })
-    }
+    //     axios.get(geoUrl, {
+    //         params: {
+    //             address: location,
+    //             key: geoKey
+    //         }
+    //     })
+    //         .then(res => {
+    //             setLatt(res.results[0].geometry.location.lat)//lat)
+    //             setLong(res.results[0].geometry.location.lng)//lng)
+    //             console.log(res.results[0].geometry.location.lat);
+    //             console.log(res.results[0].geometry.location.lng);
+    //         }).catch((err)=>{console.log(err)})
+    // }
 
     //...........................................................................
     function handleSubmit(event) {
@@ -56,7 +55,7 @@ export default function Feed(props) {
                 <div className='col-8'>
                     <div className='row'>
                         <div className='col bold event-title'>
-                            <p>{props.name}</p>
+                            <h2>{props.name}</h2>
                             <p>{props.date}</p>
                         </div>
                     </div>
@@ -90,10 +89,7 @@ export default function Feed(props) {
                         <div className='col'>
                             {/* <img className='map' src={map} alt='thumbnail of event location' /> */}
                             <div className='map'>
-                                <Map
-                                    lattitude={latt}
-                                    longitude={long}
-                                />
+                                <Map /> 
                             </div>
                         </div>
                     </div>
@@ -137,3 +133,7 @@ export default function Feed(props) {
     )
 
 };
+
+
+
+

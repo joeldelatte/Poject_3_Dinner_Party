@@ -1,35 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker } from 'react-google-maps';
 import './Map.css';
 
-export default function Map(props) {
+const lattitude = 30.2672;
+const longitude = -97.7431;
 
-    const mapKey = 'put your google map key here';
-    const mapUrl = 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=';
-
-    // let [map, setMap] = useState("");
-
-    function Map() {
-        return (
-            <GoogleMap
-                defaultZoom={10}
-                defaultCenter={{ lat: props.latitude, lng: props.longitude }}
-            >
-                <Marker key={props.key} position={{ lat: props.latitude, lng: props.longitude }} />
-            </GoogleMap>
-        );
-    }
-
-    const WrappedMap = withScriptjs(withGoogleMap(Map));
-
-    return (
-        <div className='map'>
-            <WrappedMap
-                googleMapUrl={mapUrl + mapKey}
-                loadingElement={<div style={{ height: '100%' }} />}
-                containerElement={<div style={{ height: '100%' }} />}
-                mapElement={<div style={{ height: '100%' }} />}
-            />
-        </div>
-    )
+class Map extends Component {
+   render() {
+   const GoogleMapExample = withScriptjs(withGoogleMap(props => (
+      <GoogleMap
+        defaultCenter = { { lat: 30.2672, lng: -97.7431 } }
+        defaultZoom = { 11 }
+      >
+          <Marker position={{ lat: lattitude, lng: longitude }}/>
+      </GoogleMap>
+   )));
+   return(
+      <div>
+        <GoogleMapExample
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAa07poXHneFveXwdglrdC6Ahg6U2JnwUs`}
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={ <div style={{ height: `200px`, width: '200px' }} /> }
+          mapElement={ <div style={{ height: `100%` }} /> }
+        />
+      </div>
+   );
+   }
 };
+export default Map;

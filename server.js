@@ -5,6 +5,7 @@ const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+require('dotenv').config();
 
 var corsOptions = {
     origin: "http://localhost:3000"
