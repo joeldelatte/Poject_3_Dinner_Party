@@ -7,8 +7,8 @@ import Map from '../Map/Map';
 
 export default function Feed(props) {
 
-    // const geoKey = `AIzaSyCfDTXwXZhRecxI38q0SDC87l3pYs-YLRo`;
-    // const geoUrl = `https://maps.googleapis.com/maps/api/geocode/json?`;
+    const geoKey = 'process.env.REACT_APP_GEOCODE_KEY';
+    const geoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
 
     // const [latt, setLatt] = useState("");
     // const [long, setLong] = useState("");
